@@ -148,6 +148,8 @@ keymap = {
     'crew <dgndictation>': find_next,
     'trail <dgndictation>': find_previous,
 
+    'tools beautify': Key('ctrl-alt-b'),
+
     'shackle': Key('cmd-l'),
     'selrang' + numerals: select_lines,
 

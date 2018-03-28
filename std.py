@@ -33,7 +33,17 @@ mapping = {
     'new-paragraph': '\n\n',
 }
 
+token_replace =  {
+    'et cetera': 'etc',
+    'e-mail': 'email',
+    'i\\pronoun': 'I',
+    'i\'m': 'I\'m',
+    'i\'ve': 'I\'ve',
+    'i\'d': 'I\'d',
+}
+
 def parse_word(word):
+    word = token_replace.get(word, word)
     word = word.lstrip('\\').split('\\', 1)[0]
     word = mapping.get(word, word)
     return word
@@ -72,7 +82,7 @@ formatters = {
     'swipe':  (False, lambda i, word, _: (', ' + word) if i == 0 else word),
     'trench':  (False, lambda i, word, _: (' ' + word) if i == 0 else word),
     'title':  (False, lambda i, word, _: word.capitalize()),
-    'allcaps': (False, lambda i, word, _: word.upper()),
+    # 'allcaps': (False, lambda i, word, _: word.upper()),
     'string': (False, surround("'")),
     'padded': (False, surround(" ")),
     # 'rotthirteen':  (False, rot13),
@@ -132,6 +142,9 @@ keymap.update({
     'right': Key('right'),
     'up':    Key('up'),
     'down':  Key('down'),
+
+    # 'run commit <dgndictation>': ['git commit -m "', text, '"', Key('left')],
+
 
     'delete': Key('backspace'),
 
@@ -225,6 +238,7 @@ keymap.update({
     'state (def | deaf | deft)': 'def ',
     # 'state else if': 'elif ',
     'state if': ['if ()', Key('left')],
+    'state else': [' else {}', Key('left'), Key('enter')],
     'state else if': [' else if ()', Key('left')],
     'state while': ['while ()', Key('left')],
     'state for': 'for`',
@@ -235,13 +249,14 @@ keymap.update({
     'state import': 'import ',
     # 'state class': 'class ',
     'state let': 'let ',
+    'state return': 'return ',
     'state variable': 'var ',
 
     'comment see': '// ',
     'comment py': '# ',
 
-    'word queue': 'queue',
-    'word eye': 'eye',
+    'state queue': 'queue',
+    'state eye': 'eye',
     # 'word bson': 'bson',
     # 'word iter': 'iter',
     # 'word no': 'NULL',

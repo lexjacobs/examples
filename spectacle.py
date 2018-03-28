@@ -25,10 +25,10 @@ keymap = {
     # 'windy next third': Key('ctrl-alt-right'),
     # 'windy previous third': Key('ctrl-alt-left'),
 
-    # 'windy larger': Key('shift-ctrl-alt-right'),
-    # 'windy smaller': Key('shift-ctrl-alt-left'),
+    'windy larger': Key('cmd-ctrl-alt-f8'),
+    'windy smaller': Key('cmd-ctrl-alt-f9'),
 
-    'windy undo': Key('cmd-ctrl-alt-f9'),
+    'windy undo': Key('cmd-ctrl-alt-f7'),
     # 'windy redo': Key('cmd-alt-shift-z'),
 
 }
