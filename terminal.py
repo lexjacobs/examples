@@ -28,7 +28,7 @@ keymap = {
     'run git push origin master': 'git push origin master ',
     'run git pull': 'git pull ',
     'run git reset': 'git reset ',
-    'run git status': 'git status ',
+    'run git status': 'git status \n',
     'run git tag': 'git tag ',
     'run git add': 'git add ',
     'run git add dot': 'git add .\n',

@@ -78,9 +78,9 @@ formatters = {
     'camel':  (True,  lambda i, word, _: word if i == 0 else word.capitalize()),
     'snake':  (True,  lambda i, word, _: word if i == 0 else '_'+word),
     'smash':  (True,  lambda i, word, _: word),
-    'sentence':  (False, lambda i, word, _: (' ' + word.capitalize()) if i == 0 else word),
+    # 'sentence':  (False, lambda i, word, _: (' ' + word.capitalize()) if i == 0 else word),
     'swipe':  (False, lambda i, word, _: (', ' + word) if i == 0 else word),
-    'trench':  (False, lambda i, word, _: (' ' + word) if i == 0 else word),
+    # 'trench':  (False, lambda i, word, _: (' ' + word) if i == 0 else word),
     'title':  (False, lambda i, word, _: word.capitalize()),
     # 'allcaps': (False, lambda i, word, _: word.upper()),
     'string': (False, surround("'")),
@@ -111,6 +111,13 @@ def FormatText(m):
             fmt.append(w.word)
     words = [str(s).lower() for s in m.dgndictation[0]._words]
 
+    # added modification to split tokens
+    tmp = []
+    for word in words:
+        tmp.extend(word.split())
+    words = tmp
+    # end added modification
+
     tmp = []
     spaces = True
     for i, word in enumerate(words):
@@ -127,6 +134,13 @@ def FormatText(m):
         sep = ''
     Str(sep.join(words))(None)
 
+
+def sentence_text(m):
+    tmp = [str(s).lower() for s in m.dgndictation[0]._words]
+    words = [parse_word(word) for word in tmp]
+    words[0] = words[0].title()
+    Str(' '.join(words))(None)
+
 ctx = Context('input')
 
 keymap = {}
@@ -142,6 +156,13 @@ keymap.update({
     'right': Key('right'),
     'up':    Key('up'),
     'down':  Key('down'),
+
+    # added modifications for dictation
+    'sentence <dgndictation> [over]': sentence_text,
+    'comma <dgndictation> [over]': [', ', text],
+    'period <dgndictation> [over]': ['. ', sentence_text],
+    'more <dgndictation> [over]': [' ', text],
+    # end added modifications for dictation
 
     # 'run commit <dgndictation>': ['git commit -m "', text, '"', Key('left')],
 

@@ -1,0 +1,75 @@
+````
+```def sentence_text(m):
+    tmp = [str(s).lower() for s in m.dgndictation[0]._words]
+    words = [parse_word(word) for word in tmp]
+    words[0] = words[0].title()
+    Str(' '.join(words))(None)
+
+keymap.update({
+    'sentence <dgndictation> [over]': sentence_text,
+    'comma <dgndictation> [over]': [', ', text],
+    'period <dgndictation> [over]': ['. ', sentence_text],
+    'more <dgndictation> [over]': [' ', text],```
+(edited)
+and comment out sentence in the formatters list
+this should give you passable text input
+This is a test, and another clause. And another sentence and more stuff.
+^^ This was dictated using the commands i just posted.
+
+````
+
+
+
+
+```import eye
+from talon import tap
+from talon.voice import Word, Context, Key, Rep, Str, press
+
+def on_key(typ, e):
+    mask = tap.CTRL | tap.ALT | tap.DOWN
+    if e.code == 0 and (e.flags & mask == mask):
+        eye.config.control_mouse = not eye.config.control_mouse
+
+tap.register(tap.KEY, on_key)
+def unload(): tap.unregister(tap.KEY, on_key)```
+
+@Steve ^^
+this is for `ctrl-alt-a`
+anything but A and you'll need to figure out the key code (see `code == 0`) (edited)
+
+
+
+
+import contextlib
+@contextlib.contextmanager
+def clipboard_change():
+    old = clip.get()
+    serial = clip.serial()
+    yield
+    data = clip.await_change(after=serial)
+    clip.set(old)
+
+
+
+
+
+````
+
+do this separately from the other block (edited)
+```tmp = []
+for word in words:
+    tmp.extend(word.split())
+words = tmp
+
+....
+
+tmp = []```
+https://github.com/talonvoice/examples/blob/master/std.py#L77
+std.py:77
+    ```tmp = []```
+
+talonvoice/examples
+Added by GitHub
+so above this tmp = [] line
+
+````
