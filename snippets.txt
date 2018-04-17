@@ -1,5 +1,16 @@
-````
-```def sentence_text(m):
+def get_selection():
+    with clip.capture() as sel:
+        press('cmd-c', wait=0)
+    return sel.get()
+
+
+````````````
+import eye
+eye.config.velocity = eye.Point2d(150, 225) * 1.5
+
+
+````````````
+def sentence_text(m):
     tmp = [str(s).lower() for s in m.dgndictation[0]._words]
     words = [parse_word(word) for word in tmp]
     words[0] = words[0].title()
@@ -16,12 +27,12 @@ this should give you passable text input
 This is a test, and another clause. And another sentence and more stuff.
 ^^ This was dictated using the commands i just posted.
 
-````
 
 
 
 
-```import eye
+````````````
+import eye
 from talon import tap
 from talon.voice import Word, Context, Key, Rep, Str, press
 
@@ -49,11 +60,7 @@ def clipboard_change():
     data = clip.await_change(after=serial)
     clip.set(old)
 
-
-
-
-
-````
+````````````
 
 do this separately from the other block (edited)
 ```tmp = []
