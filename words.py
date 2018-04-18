@@ -3,16 +3,18 @@ from talon.voice import Context, Key
 ctx = Context('words')
 
 keymap = {
-    'shrink command': 'cmd',
-    'shrink control': 'ctrl',
-    'shrink option': 'opt',
+    'state command': 'cmd',
+    'state control': 'ctrl',
+    'state option': 'opt',
 
     'state cycling': 'cyclom',
     'state doctor': 'docker',
+    'state for each': 'forEach',
     'state jason': 'JSON',
     'state git': 'git',
     'state gist': 'gist',
     'state with': 'width',
+    'state them': 'vim',
     'state static': 'static ',
     'state string': 'JSON.stringify',
     'state no': 'null',

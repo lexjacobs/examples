@@ -80,3 +80,32 @@ Added by GitHub
 so above this tmp = [] line
 
 ````
+from talon.api import ffi
+from talon.voice import Context, Key
+from talon import ctrl, applescript
+import time
+
+def discord_mic(m):
+    old = ctrl.mouse_pos()
+    x = applescript.run('''
+    tell application "System Events" to tell process "Discord" to tell (menu bar item 1 of menu bar 2)
+        set AppleScript's text item delimiters to ", "
+        position as string
+    end tell
+    ''')
+    x, y = map(int, ffi.string(x).decode('utf8').split(', '))
+    ctrl.mouse(x, y)
+    ctrl.mouse_click()
+    ctrl.mouse(*old)
+    applescript.run('''
+    tell application "System Events" to tell process "Discord" to tell (menu bar item 1 of menu bar 2)
+        click menu item named "Mute" of menu 1
+    end tell
+    ''')
+
+ctx = Context('discord')
+ctx.keymap({
+    'discord mute': discord_mic,
+})
+
+```````````````````````````

@@ -25,6 +25,7 @@ alpha.update({'control option %s' % k: Key('ctrl-alt-%s' % v) for k, v in alnum}
 alpha.update({'command control %s' % k: Key('cmd-ctrl-%s' % v) for k, v in alnum})
 alpha.update({'command option %s' % k: Key('cmd-alt-%s' % v) for k, v in alnum})
 alpha.update({'option %s' % k: Key('alt-%s' % v) for k, v in alnum})
+alpha.update({'option shift %s' % k: Key('alt-shift-%s' % v) for k, v in alnum})
 # print(alpha)
 
 mapping = {
@@ -227,8 +228,8 @@ keymap.update({
     'dot pie': '.py',
     'teapot': 'this.',
 
-    'const': 'const ',
-    'static': 'static ',
+    'state const': 'const ',
+    'state static': 'static ',
     'tip pent': 'int ',
     'tip char': 'char ',
     'tip byte': 'byte ',

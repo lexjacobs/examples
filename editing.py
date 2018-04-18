@@ -1,10 +1,6 @@
 from talon.voice import Context, Key
 from talon import clip
 
-def set_this(m):
-    result = clip.get()
-    print('result', result)
-
 ctx = Context('edit')
 
 keymap = {
