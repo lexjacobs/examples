@@ -159,7 +159,7 @@ keymap.update({
     'down':  Key('down'),
 
     # added modifications for dictation
-    'sentence <dgndictation> [over]': sentence_text,
+    'sentence <dgndictation> [over]': [' ', sentence_text],
     'comma <dgndictation> [over]': [', ', text],
     'period <dgndictation> [over]': ['. ', sentence_text],
     'more <dgndictation> [over]': [' ', text],
