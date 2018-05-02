@@ -1,5 +1,6 @@
 from talon.voice import Context, Key, Str, press
 from talon import clip
+import time
 
 ctx = Context('clipboard')
 
@@ -8,19 +9,15 @@ def get_selection():
         press('cmd-c', wait=0)
     return s.get()
 
-def bigPrevious(everything):
-    def select_and_change(m):
+def apply_to_line(fn):
+    def wrap(m):
         press('shift-alt-left')
-        value = get_selection()
-        if everything == True:
-            Str(value.upper())(None)
-        else:
-            Str(value.capitalize())(None)
-    return select_and_change
+        sel = get_selection()
+        time.sleep(.05)
+        Str(fn(sel))(None)
+    return wrap
 
-keymap = {
-    'run caps': bigPrevious(False),
-    'run yeller': bigPrevious(True)
-}
-
-ctx.keymap(keymap)
+ctx.keymap({
+    'run caps': apply_to_line(lambda s: s.capitalize()),
+    'run yeller': apply_to_line(lambda s: s.upper()),
+})

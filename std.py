@@ -139,15 +139,15 @@ def FormatText(m):
 def sentence_text(m):
     tmp = [str(s).lower() for s in m.dgndictation[0]._words]
     words = [parse_word(word) for word in tmp]
-    words[0] = words[0].title()
+    words[0] = words[0].capitalize()
     Str(' '.join(words))(None)
-
+ 
 ctx = Context('input')
 
 keymap = {}
 keymap.update(alpha)
 keymap.update({
-    'say <dgndictation> [over]': text,
+    'tell <dgndictation> [over]': text,
     # 'phrase <dgndictation> [over]': text,
     # 'word <dgnwords>': word,
     '(%s)+ <dgndictation>' % (' | '.join(formatters)): FormatText,

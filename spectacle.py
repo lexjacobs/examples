@@ -6,30 +6,30 @@ ctx = Context('spectacle')
 
 
 keymap = {
-    # 'windy center': Key('cmd-alt-f'),
-    'windy max': Key('cmd-ctrl-alt-f10'),
+    # 'wendy center': Key('cmd-alt-f'),
+    'wendy max': Key('cmd-ctrl-alt-f10'),
 
-    'windy left': Key('cmd-ctrl-alt-f11'),
-    'windy right': Key('cmd-ctrl-alt-f12'),
-    # 'windy top': Key('cmd-alt-top'),
-    # 'windy bottom': Key('cmd-alt-bottom'),
+    'wendy left': Key('cmd-ctrl-alt-f11'),
+    'wendy right': Key('cmd-ctrl-alt-f12'),
+    # 'wendy top': Key('cmd-alt-top'),
+    # 'wendy bottom': Key('cmd-alt-bottom'),
 
-    # 'windy upper left': Key('cmd-ctrl-left'),
-    # 'windy lower left': Key('cmd-ctrl-shift-left'),
-    # 'windy upper right': Key('cmd-ctrl-right'),
-    # 'windy lower right': Key('cmd-ctrl-shift-right'),
+    # 'wendy upper left': Key('cmd-ctrl-left'),
+    # 'wendy lower left': Key('cmd-ctrl-shift-left'),
+    # 'wendy upper right': Key('cmd-ctrl-right'),
+    # 'wendy lower right': Key('cmd-ctrl-shift-right'),
 
-    # 'windy next display': Key('cmd-ctrl-alt-right'),
-    # 'windy previous display': Key('cmd-ctrl-alt-left'),
+    # 'wendy next display': Key('cmd-ctrl-alt-right'),
+    # 'wendy previous display': Key('cmd-ctrl-alt-left'),
 
-    # 'windy next third': Key('ctrl-alt-right'),
-    # 'windy previous third': Key('ctrl-alt-left'),
+    # 'wendy next third': Key('ctrl-alt-right'),
+    # 'wendy previous third': Key('ctrl-alt-left'),
 
-    'windy larger': Key('cmd-ctrl-alt-f8'),
-    'windy smaller': Key('cmd-ctrl-alt-f9'),
+    'wendy larger': Key('cmd-ctrl-alt-f8'),
+    'wendy smaller': Key('cmd-ctrl-alt-f9'),
 
-    'windy undo': Key('cmd-ctrl-alt-f7'),
-    # 'windy redo': Key('cmd-alt-shift-z'),
+    'wendy undo': Key('cmd-ctrl-alt-f7'),
+    # 'wendy redo': Key('cmd-alt-shift-z'),
 
 }
 

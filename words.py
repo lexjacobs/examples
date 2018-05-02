@@ -13,6 +13,8 @@ keymap = {
     'state jason': 'JSON',
     'state git': 'git',
     'state gist': 'gist',
+    'state hero': 'heroku',
+    'state will': 'twilio',
     'state with': 'width',
     'state them': 'vim',
     'state static': 'static ',
