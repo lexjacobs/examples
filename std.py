@@ -12,7 +12,7 @@ alpha = {}
 alpha.update(dict(alnum))
 # alpha.update({'sky %s' % word: letter for word, letter in zip(alpha_alt, string.ascii_uppercase)})
 
-extra_modifier_key_targets = [{'left':'left','right':'right','up':'up','down':'down','minus':'-','plus':'+','(return|enter)':'enter','slash':'/','delete':'backspace','space':'space','index right':']','index left':'['}]
+extra_modifier_key_targets = [{'left':'left','right':'right','up':'up','down':'down','minus':'-','plus':'+','(return|enter)':'enter','slash':'/','delete':'backspace','space':'space','index right':']','index left':'[','escape':'esc'}]
 for (k, v) in extra_modifier_key_targets[0].items():
     alnum.append((k, v))
 
