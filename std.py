@@ -141,13 +141,14 @@ def sentence_text(m):
     words = [parse_word(word) for word in tmp]
     words[0] = words[0].capitalize()
     Str(' '.join(words))(None)
- 
+
 ctx = Context('input')
 
 keymap = {}
 keymap.update(alpha)
 keymap.update({
     'tell <dgndictation> [over]': text,
+    'oh <dgndictation> [over]': text,
     # 'phrase <dgndictation> [over]': text,
     # 'word <dgnwords>': word,
     '(%s)+ <dgndictation>' % (' | '.join(formatters)): FormatText,
