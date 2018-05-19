@@ -33,6 +33,7 @@ mapping = {
     'new-line': '\n',
     'new-paragraph': '\n\n',
 }
+punctuation = set('.,-!?')
 
 token_replace =  {
     'et cetera': 'etc',
@@ -45,19 +46,34 @@ token_replace =  {
 
 def parse_word(word):
     word = token_replace.get(word, word)
-    word = word.lstrip('\\').split('\\', 1)[0]
+    word = str(word).lstrip('\\').split('\\', 1)[0]
     word = mapping.get(word, word)
     return word
 
+def join_words(words, sep=' '):
+    out = ''
+    for i, word in enumerate(words):
+        if i > 0 and word not in punctuation:
+            out += sep
+        out += word
+    return out
+
+def parse_words(m):
+    return list(map(parse_word, m.dgndictation[0]._words))
+
+def insert(s):
+    Str(s)(None)
+
 def text(m):
-    tmp = [str(s).lower() for s in m.dgndictation[0]._words]
-    words = [parse_word(word) for word in tmp]
-    Str(' '.join(words))(None)
+    insert(join_words(parse_words(m)).lower())
+
+def sentence_text(m):
+    text = join_words(parse_words(m)).lower()
+    insert(text.capitalize())
 
 def word(m):
-    tmp = [str(s).lower() for s in m.dgnwords[0]._words]
-    words = [parse_word(word) for word in tmp]
-    Str(' '.join(words))(None)
+    text = join_words(list(map(parse_word, m.dgnwords[0]._words)))
+    insert(text.lower())
 
 def surround(by):
     def func(i, word, last):
@@ -85,6 +101,7 @@ formatters = {
     'title':  (False, lambda i, word, _: word.capitalize()),
     # 'allcaps': (False, lambda i, word, _: word.upper()),
     'string': (False, surround("'")),
+    'dubstring': (False, surround('"')),
     'padded': (False, surround(" ")),
     # 'rotthirteen':  (False, rot13),
 
@@ -110,13 +127,13 @@ def FormatText(m):
     for w in m._words:
         if isinstance(w, Word):
             fmt.append(w.word)
-    words = [str(s).lower() for s in m.dgndictation[0]._words]
+    words = parse_words(m)
 
     # added modification to split tokens
-    tmp = []
-    for word in words:
-        tmp.extend(word.split())
-    words = tmp
+    # tmp = []
+    # for word in words:
+    #     tmp.extend(word.split())
+    # words = tmp
     # end added modification
 
     tmp = []
@@ -150,14 +167,7 @@ keymap.update({
     'tell <dgndictation> [over]': text,
     'oh <dgndictation> [over]': text,
     # 'phrase <dgndictation> [over]': text,
-    # 'word <dgnwords>': word,
-    '(%s)+ <dgndictation>' % (' | '.join(formatters)): FormatText,
-
-    'tab':   Key('tab'),
-    'left':  Key('left'),
-    'right': Key('right'),
-    'up':    Key('up'),
-    'down':  Key('down'),
+    'word <dgnwords>': word,
 
     # added modifications for dictation
     'sentence <dgndictation> [over]': [' ', sentence_text],
@@ -165,6 +175,14 @@ keymap.update({
     'period <dgndictation> [over]': ['. ', sentence_text],
     'more <dgndictation> [over]': [' ', text],
     # end added modifications for dictation
+
+    '(%s)+ <dgndictation>' % (' | '.join(formatters)): FormatText,
+
+    'tab':   Key('tab'),
+    'left':  Key('left'),
+    'right': Key('right'),
+    'up':    Key('up'),
+    'down':  Key('down'),
 
     # 'run commit <dgndictation>': ['git commit -m "', text, '"', Key('left')],
 
