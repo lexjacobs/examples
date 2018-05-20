@@ -287,7 +287,7 @@ keymap.update({
     'state class': 'class ',
     'state let': 'let ',
     'state return': 'return ',
-    'state variable': 'var ',
+    'state var': 'var ',
 
     # 'state include': '#include ',
     # 'state include system': ['#include <>', Key('left')],

@@ -48,7 +48,7 @@ def text_to_number(m):
 
 
 def parse_word(word):
-    word = word.lstrip('\\').split('\\', 1)[0]
+    word = str(word).lstrip('\\').split('\\', 1)[0]
     return word
 
 
@@ -155,7 +155,7 @@ keymap = {
 
     # 'shockey': Key('cmd-shift-enter'),
     # 'shockoon': Key('cmd-right enter'),
-    'sprinkoon' + numerals: jump_to_eol_and(lambda: press('enter')),
+    # 'sprinkoon' + numerals: jump_to_eol_and(lambda: press('enter')),
 
     'tab last': Key('cmd-shift-['),
     'tab next': Key('cmd-shift-]'),
