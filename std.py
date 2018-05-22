@@ -34,7 +34,7 @@ mapping = {
 }
 punctuation = set('.,-!?')
 
-token_replace =  {
+token_replace = {
     'et cetera': 'etc',
     'e-mail': 'email',
     'i\\pronoun': 'I',
@@ -326,6 +326,8 @@ keymap.update({
     'string utf8': "'utf8'",
     # 'state past': 'pass',
 
+    'tinker': '`',
+    'tinker triple': '```',
     'equals': '=',
     # '(minus | dash)': '-',
     'minus': '-',
