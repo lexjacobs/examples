@@ -45,23 +45,20 @@ token_replace = {
 
 def parse_word(word):
     word = str(word)
-    if word not in token_replace:
-        word = word.lower()
     if word in token_replace:
         word = token_replace.get(word)
+    else:
+        word = word.lower()
     word = word.lstrip('\\').split('\\', 1)[0]
     word = mapping.get(word, word)
     return word
 
-def join_words(words, cap, sep=' '):
+def join_words(words, sep=' '):
     out = ''
     for i, word in enumerate(words):
         if i > 0 and word not in punctuation:
             out += sep
-        if i == 0 and cap:
-            out += word.capitalize()
-        else:
-            out += word
+        out += word
     return out
 
 def parse_words(m):
@@ -71,13 +68,16 @@ def insert(s):
     Str(s)(None)
 
 def text(m):
-    insert(join_words(parse_words(m), False))
+    insert(join_words(parse_words(m)))
 
 def sentence_text(m):
-    insert(join_words(parse_words(m), True))
+    insert(join_words(capitalize(parse_words(m))))
+
+def capitalize(words):
+    return [words[0].capitalize()] + words[1:]
 
 def word(m):
-    text = join_words(list(map(parse_word, m.dgnwords[0]._words)), False)
+    text = join_words(list(map(parse_word, m.dgnwords[0]._words)))
     insert(text.lower())
 
 def surround(by):
