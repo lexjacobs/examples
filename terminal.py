@@ -17,6 +17,10 @@ keymap = {
     'tools oedipus': [Key('ctrl-x'), Key('ctrl-e')],
     'open sublime': Str('subl .\n'),
     'open adam': Str('atom .\n'),
+
+    'tools full-screen': Key('cmd-enter'),
+    'tools exit': [Key('ctrl-c'), 'exit\n'],
+    'window clear': Key('cmd-k'),
 }
 
 ctx.keymap(keymap)
