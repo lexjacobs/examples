@@ -32,29 +32,36 @@ mapping = {
     'new-line': '\n',
     'new-paragraph': '\n\n',
 }
-punctuation = set('.,-!?')
+punctuation = set('.,–!?')
 
 token_replace = {
     'et cetera': 'etc',
     'e-mail': 'email',
-    'i\\pronoun': 'I',
-    'i\'m': 'I\'m',
-    'i\'ve': 'I\'ve',
-    'i\'d': 'I\'d',
+    'I\\pronoun': 'I',
+    'I\'m': 'I\'m',
+    'I\'ve': 'I\'ve',
+    'I\'d': 'I\'d',
 }
 
 def parse_word(word):
-    word = token_replace.get(word, word)
-    word = str(word).lstrip('\\').split('\\', 1)[0]
+    word = str(word)
+    if word not in token_replace:
+        word = word.lower()
+    if word in token_replace:
+        word = token_replace.get(word)
+    word = word.lstrip('\\').split('\\', 1)[0]
     word = mapping.get(word, word)
     return word
 
-def join_words(words, sep=' '):
+def join_words(words, cap, sep=' '):
     out = ''
     for i, word in enumerate(words):
         if i > 0 and word not in punctuation:
             out += sep
-        out += word
+        if i == 0 and cap:
+            out += word.capitalize()
+        else:
+            out += word
     return out
 
 def parse_words(m):
@@ -64,14 +71,13 @@ def insert(s):
     Str(s)(None)
 
 def text(m):
-    insert(join_words(parse_words(m)).lower())
+    insert(join_words(parse_words(m), False))
 
 def sentence_text(m):
-    text = join_words(parse_words(m)).lower()
-    insert(text.capitalize())
+    insert(join_words(parse_words(m), True))
 
 def word(m):
-    text = join_words(list(map(parse_word, m.dgnwords[0]._words)))
+    text = join_words(list(map(parse_word, m.dgnwords[0]._words)), False)
     insert(text.lower())
 
 def surround(by):
@@ -105,7 +111,7 @@ formatters = {
     'pathway':  (True, lambda i, word, _: word if i == 0 else '/'+word),
     'dotsway':  (True, lambda i, word, _: word if i == 0 else '.'+word),
     'yellsnik':  (True, lambda i, word, _: word.capitalize() if i == 0 else '_'+word.capitalize()),
-    'champ': (True, lambda i, word, _: word.capitalize() if i == 0 else " "+word),
+    # 'champ': (True, lambda i, word, _: word.capitalize() if i == 0 else " "+word),
     'criff': (True, lambda i, word, _: word.capitalize()),
     'yeller': (False, lambda i, word, _: word.upper()),
     'thrack': (False, lambda i, word, _: word[0:3]),
@@ -144,6 +150,7 @@ keymap.update({
     'word <dgnwords>': word,
 
     'sentence <dgndictation> [over]': [' ', sentence_text],
+    'champ <dgndictation> [over]': sentence_text,
     'comma <dgndictation> [over]': [', ', text],
     'period <dgndictation> [over]': ['. ', sentence_text],
     'more <dgndictation> [over]': [' ', text],
