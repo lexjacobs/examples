@@ -272,6 +272,8 @@ keymap.update({
     'index': ['[]', Key('left')],
     'index left': '[',
     'index right': ']',
+    'block left': '{',
+    'block right': '}',
     'block': [' {}', Key('left enter')],
     'block super': [' {}', Key('left enter enter up tab')],
     'empty array': '[]',
