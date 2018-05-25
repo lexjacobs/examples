@@ -320,6 +320,10 @@ keymap.update({
     # 'word (dickt | dictionary)': 'dict',
     'word shell': 'shell',
 
+    'snippet console': 'cl`',
+    'snippet shrug': 'shrug`',
+    'snippet spooky': 'spooky`',
+
     # 'word lunixbochs': 'lunixbochs',
     'word talon': 'talon',
     # 'word Point2d': 'Point2d',

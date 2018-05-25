@@ -3,28 +3,30 @@ from talon.voice import Context, Key
 ctx = Context('words')
 
 keymap = {
+    'dot company': '.com',
+
     'state command': 'cmd',
     'state control': 'ctrl',
     'state option': 'opt',
-
-    'state cycling': 'cyclom',
-    'state doctor': 'docker',
-    'state for each': 'forEach',
-    'state jason': 'JSON',
-    'state git': 'git',
-    'state gist': 'gist',
-    'state hero': 'heroku',
-    'state will': 'twilio',
-    'state with': 'width',
-    'state them': 'vim',
     'state static': 'static ',
-    'state string': 'JSON.stringify',
-    'state no': 'null',
-    'state no super': 'NULL',
-    'state printf': 'printf',
-    'state define': 'def ',
-    'state import': 'import ',
-    'dot company': '.com',
+
+    'word cycling': 'cyclom',
+    'word define': 'def ',
+    'word doctor': 'docker',
+    'word for each': 'forEach',
+    'word import': 'import ',
+    'word get': 'git',
+    'word gist': 'gist',
+    'word hero': 'heroku',
+    'word jason': 'JSON',
+    'word no': 'null',
+    'word no super': 'NULL',
+    'word printf': 'printf',
+    'word slack': 'slack',
+    'word string': 'JSON.stringify',
+    'word them': 'vim',
+    'word will': 'twilio',
+    'word with': 'width',
 }
 
 ctx.keymap(keymap)

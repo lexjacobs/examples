@@ -24,7 +24,6 @@ keymap = {
     'click left': adv_click(0),
     'click right': adv_click(1),
     'click control': adv_click(0, 'ctrl'),
-    'chipper': adv_click(0, 'ctrl'),
     'click command': adv_click(0, 'cmd'),
     'click option': adv_click(0, 'alt'),
     'click shift': adv_click(0, 'shift'),

@@ -151,7 +151,7 @@ keymap = {
     'tools beautify': Key('ctrl-alt-b'),
 
     'shackle': Key('cmd-l'),
-    'selrang' + numerals: select_lines,
+    'select range' + numerals: select_lines,
 
     # 'shockey': Key('cmd-shift-enter'),
     # 'shockoon': Key('cmd-right enter'),
