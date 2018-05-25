@@ -10,6 +10,7 @@ keymap = {
     'state option': 'opt',
     'state static': 'static ',
 
+    'word and': 'end',
     'word cycling': 'cyclom',
     'word define': 'def ',
     'word doctor': 'docker',

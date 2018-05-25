@@ -4,8 +4,8 @@ ctx = Context('slack', bundle='com.tinyspeck.slackmacgap')
 
 keymap = {
     'channel': Key('cmd-k'),
-    'channel up': Key('alt-up'),
-    'channel down': Key('alt-down'),
+    'channel last': Key('alt-up'),
+    'channel next': Key('alt-down'),
     'tools command': ['``', Key('left')],
     'tools code': ['``````', Key('left left left return return up')],
 }

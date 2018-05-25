@@ -10,8 +10,8 @@ alpha = {}
 alpha.update(dict(alnum))
 # alpha.update({'ship %s' % word: letter for word, letter in zip(alpha_alt, string.ascii_uppercase)})
 
-extra_modifier_key_targets = [{'left':'left','right':'right','up':'up','down':'down','minus':'-','plus':'+','(return|enter)':'enter','slash':'/','delete':'backspace','space':'space','index right':']','index left':'[','escape':'esc'}]
-for (k, v) in extra_modifier_key_targets[0].items():
+extra_modifier_key_targets = {'left':'left','right':'right','up':'up','down':'down','minus':'-','plus':'+','(return|enter)':'enter','slash':'/','delete':'backspace','space':'space','index right':']','index left':'[','escape':'esc'}
+for (k, v) in extra_modifier_key_targets.items():
     alnum.append((k, v))
 
 alpha.update({'control %s' % k: Key('ctrl-%s' % v) for k, v in alnum})
@@ -158,6 +158,7 @@ keymap.update({
     '(%s)+ <dgndictation>' % (' | '.join(formatters)): FormatText,
 
     'tab':   Key('tab'),
+    'tarp':   Key('shift-tab'),
     'left':  Key('left'),
     'right': Key('right'),
     'up':    Key('up'),
@@ -167,6 +168,7 @@ keymap.update({
 
     'slap': [Key('cmd-right enter')],
     'enter': Key('enter'),
+    'shock': Key('cmd-shift-enter'),
     'escape': Key('esc'),
     'question [mark]': '?',
     'tilde': '~',

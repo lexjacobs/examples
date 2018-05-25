@@ -9,20 +9,19 @@ keymap = {
 
     # Application navigation
     'launcher': Key('alt-space'),
-    'launcher spot': Key('cmd-space'),
-    'swick': Key('cmd-tab'),
+    'spotty': Key('cmd-space'),
+    'switch': Key('cmd-tab'),
     'tab close': Key('cmd-w'),
     'window new': Key('cmd-n'),
-    '(window next | gibby)': Key('cmd-`'),
-    '(window last | shibby)': Key('cmd-shift-`'),
-    'window space right': Key('cmd-alt-ctrl-right'),
-    'window space left': Key('cmd-alt-ctrl-left'),
+    'window next': Key('cmd-`'),
+    'window last': Key('cmd-shift-`'),
 
     # Following three commands should be application specific
     'tab last': Key('cmd-alt-left'),
     'tab next': Key('cmd-alt-right'),
     'tab new': Key('cmd-t'),
     'tab reset': Key('cmd-r'),
+    'tab (and | end)': Key('cmd-9'),
 
     # deleting
     'kite': Key('alt-delete'),
@@ -31,10 +30,6 @@ keymap = {
     'slurp': Key('backspace delete'),
     'trough': Key('alt-backspace'),
 
-    # moving
-    '(tab | tarp)': Key('tab'),
-    'tarsh': Key('shift-tab'),
-    'slap': [Key('cmd-right enter')],
     # 'shocker': [Key('cmd-left enter up')],
     # 'wonkrim': Key('alt-ctrl-left'),
     # 'wonkrish': Key('alt-ctrl-right'),
@@ -46,7 +41,7 @@ keymap = {
     'lefty': Key('cmd-left'),
     # '(left | crimp)': Key('left'),
     # '(right | chris)': Key('right'),
-    'jeep': Key('up'),
+    # 'jeep': Key('up'),
     # '(down | dune | doom)':  Key('down'),
 
     # selecting
