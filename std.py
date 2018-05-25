@@ -125,6 +125,12 @@ def FormatText(m):
             fmt.append(w.word)
     words = parse_words(m)
 
+    # Ensure multi-word phrases are single words
+    tmp = []
+    for word in words:
+        tmp.extend(word.split())
+    words = tmp
+
     tmp = []
     spaces = True
     for i, word in enumerate(words):
