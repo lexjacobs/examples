@@ -107,6 +107,7 @@ formatters = {
     'dubstring': (False, surround('"')),
     'string': (False, surround("'")),
     'padded': (False, surround(" ")),
+    'pickle': (True,  lambda i, word, _: word if i == 0 else ''),
     'rockthirteen':  (False, rot13),
     'pathway':  (True, lambda i, word, _: word if i == 0 else '/'+word),
     'dotsway':  (True, lambda i, word, _: word if i == 0 else '.'+word),
@@ -114,8 +115,8 @@ formatters = {
     # 'champ': (True, lambda i, word, _: word.capitalize() if i == 0 else " "+word),
     'criff': (True, lambda i, word, _: word.capitalize()),
     'yeller': (False, lambda i, word, _: word.upper()),
-    'thrack': (False, lambda i, word, _: word[0:3]),
-    'quattro': (False, lambda i, word, _: word[0:4]),
+    'thrack': (True, lambda i, word, _: word[0:3]),
+    'quattro': (True, lambda i, word, _: word[0:4]),
 }
 
 def FormatText(m):
@@ -158,8 +159,8 @@ keymap.update({
     'sentence <dgndictation> [over]': [' ', sentence_text],
     'champ <dgndictation> [over]': sentence_text,
     'comma <dgndictation> [over]': [', ', text],
-    'period <dgndictation> [over]': ['. ', sentence_text],
     'more <dgndictation> [over]': [' ', text],
+    'period <dgndictation> [over]': ['. ', sentence_text],
 
     '(%s)+ <dgndictation>' % (' | '.join(formatters)): FormatText,
 
