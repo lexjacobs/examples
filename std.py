@@ -1,5 +1,5 @@
 from talon.voice import Word, Context, Key, Rep, RepPhrase, Str, press
-from talon import ctrl
+from talon import ctrl, clip
 from talon_init import TALON_HOME, TALON_PLUGINS, TALON_USER
 import string
 
@@ -100,6 +100,7 @@ formatters = {
     'camel':  (True,  lambda i, word, _: word if i == 0 else word.capitalize()),
     'snake':  (True,  lambda i, word, _: word if i == 0 else '_'+word),
     'smash':  (True,  lambda i, word, _: word),
+    'squash':  (False,  lambda i, word, _: word),
     # spinal or kebab?
     'spine':  (True,  lambda i, word, _: word if i == 0 else '-'+word),
     'title':  (False, lambda i, word, _: word.capitalize()),
@@ -112,7 +113,7 @@ formatters = {
     'pathway':  (True, lambda i, word, _: word if i == 0 else '/'+word),
     'dotsway':  (True, lambda i, word, _: word if i == 0 else '.'+word),
     'yellsnik':  (True, lambda i, word, _: word.capitalize() if i == 0 else '_'+word.capitalize()),
-    # 'champ': (True, lambda i, word, _: word.capitalize() if i == 0 else " "+word),
+    'champion': (True, lambda i, word, _: word.capitalize() if i == 0 else " "+word),
     'criff': (True, lambda i, word, _: word.capitalize()),
     'yeller': (False, lambda i, word, _: word.upper()),
     'thrack': (True, lambda i, word, _: word[0:3]),
@@ -124,7 +125,14 @@ def FormatText(m):
     for w in m._words:
         if isinstance(w, Word):
             fmt.append(w.word)
-    words = parse_words(m)
+    try:
+        words = parse_words(m)
+    except AttributeError:
+        with clip.capture() as s:
+            press('cmd-c')
+        words = s.get().split(' ')
+        if not words:
+            return
 
     # Ensure multi-word phrases are single words
     tmp = []
@@ -162,7 +170,7 @@ keymap.update({
     'more <dgndictation> [over]': [' ', text],
     'period <dgndictation> [over]': ['. ', sentence_text],
 
-    '(%s)+ <dgndictation>' % (' | '.join(formatters)): FormatText,
+    '(%s)+ [<dgndictation>]' % (' | '.join(formatters)): FormatText,
 
     'tab':   Key('tab'),
     'tarp':   Key('shift-tab'),
