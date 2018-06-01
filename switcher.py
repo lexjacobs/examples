@@ -12,9 +12,19 @@ def switch_app(m):
             app.focus()
             break
 
+def short_application(m, app):
+    m._words = [0, app]
+    switch_app(m)
+
 ctx = Context('switcher')
 keymap = {
     'focus {switcher.apps}': switch_app,
+
+    'stratum': lambda x: short_application(x, 'Atom'),
+    'termite': lambda x: short_application(x, 'iTerm2'),
+    'chatter': lambda x: short_application(x, 'Messages'),
+    'chromie': lambda x: short_application(x, 'Google Chrome'),
+    'slacker': lambda x: short_application(x, 'Slack')
 }
 ctx.keymap(keymap)
 
