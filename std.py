@@ -454,4 +454,27 @@ keymap.update({
     'scroll top': [Key('cmd-up')],
     'scroll bottom': [Key('cmd-down')],
 })
+
+def select_text_to_right_of_cursor(m):
+    key = join_words(parse_words(m)).lower()
+    with clip.capture() as clipboardText:
+        press('cmd-shift-right')
+        press('cmd-c')
+        press('left')
+    textRight = clipboardText.get()
+    print('text captured',textRight)
+    result = textRight.find(key)
+    if result == -1:
+        return
+    # cursor over to the found key text
+    for i in range(0, result):
+        press('right', wait=0)
+    # now select the matching key text
+    for i in range(0, len(key)):
+        press('shift-right', wait=0)
+
+keymap.update({
+    'crew <dgndictation> [over]' : select_text_to_right_of_cursor
+})
+
 ctx.keymap(keymap)
