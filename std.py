@@ -41,6 +41,7 @@ token_replace = {
     'I\'m': 'I\'m',
     'I\'ve': 'I\'ve',
     'I\'d': 'I\'d',
+    'meta-\\\\meta': 'meta',
 }
 
 def parse_word(word):
@@ -178,7 +179,7 @@ keymap.update({
     'state function <dgndictation> [over]': ['function ', text],
     'state return <dgndictation> [over]': ['return ', text],
     'state variable <dgndictation> [over]': ['variable ', text],
-    'state argument <dgndictation>': ['()', Key('left'), text],
+    'args <dgndictation>': ['()', Key('left'), text],
 
     '(%s)+ [<dgndictation>]' % (' | '.join(formatters)): FormatText,
 
@@ -225,7 +226,7 @@ keymap.update({
     'triple quote': "'''",
     # '(dot | period)': '.',
     'dot': '.',
-    '(comma | pebble)': ',',
+    '(comma | pebble)': ', ',
     'space': ' ',
     '[forward] slash': '/',
     'backslash': '\\',
