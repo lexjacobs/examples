@@ -20,13 +20,17 @@ keymap = {
     'application I term': open_application('iterm'),
     'application messages': open_application('messages'),
     'application music': open_application('itunes'),
+    'application skype': open_application('skype'),
     'application slacker': open_application('slack'),
     'application terminal': open_application('terminal'),
     'application tree': open_application('sourcetree'),
     'application zoom': open_application('zoom'),
     'preffies': Key('cmd-,'),
     'marco': Key('cmd-f'),
-    'marco super': Key('cmd-shift-f'),
+    'marco project': Key('cmd-shift-f'),
+    'marco select': Key('cmd-e cmd-f enter'),
+    'marco next': Key('cmd-g'),
+    'marco last': Key('cmd-shift-g'),
     'run stacks': Key('ctrl-alt-d'),
 }
 

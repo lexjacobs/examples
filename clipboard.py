@@ -13,7 +13,7 @@ def apply_to_line(fn):
     def wrap(m):
         press('shift-alt-left')
         sel = get_selection()
-        time.sleep(.05)
+        time.sleep(.1)
         Str(fn(sel))(None)
     return wrap
 

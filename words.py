@@ -9,6 +9,7 @@ keymap = {
     'state control': 'ctrl',
     'state option': 'opt',
     'state static': 'static ',
+    'word parse integer': ['parseInt()', Key('left')],
 
     'word and': 'end',
     'word cycling': 'cyclom',

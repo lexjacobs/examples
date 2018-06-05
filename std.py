@@ -10,7 +10,7 @@ alpha = {}
 alpha.update(dict(alnum))
 # alpha.update({'ship %s' % word: letter for word, letter in zip(alpha_alt, string.ascii_uppercase)})
 
-extra_modifier_key_targets = {'left':'left','right':'right','up':'up','down':'down','minus':'-','plus':'+','(return|enter)':'enter','slash':'/','delete':'backspace','space':'space','index right':']','index left':'[','escape':'esc'}
+extra_modifier_key_targets = {'left':'left','right':'right','up':'up','down':'down','minus':'-','plus':'+','(return|enter)':'enter','slash':'/','delete':'backspace','space':'space','index right':']','index left':'[','escape':'esc','home':'home','end':'end'}
 for (k, v) in extra_modifier_key_targets.items():
     alnum.append((k, v))
 
@@ -169,6 +169,16 @@ keymap.update({
     'comma <dgndictation> [over]': [', ', text],
     'more <dgndictation> [over]': [' ', text],
     'period <dgndictation> [over]': ['. ', sentence_text],
+
+    'marco <dgndictation> [over]': [Key('cmd-f'), text, Key('enter')],
+    'state import <dgndictation> [over]': ['import ', text],
+    'state class <dgndictation> [over]': ['class ', text],
+    'state const <dgndictation> [over]': ['const ', text],
+    'state let <dgndictation> [over]': ['let ', text],
+    'state function <dgndictation> [over]': ['function ', text],
+    'state return <dgndictation> [over]': ['return ', text],
+    'state variable <dgndictation> [over]': ['variable ', text],
+    'state argument <dgndictation>': ['()', Key('left'), text],
 
     '(%s)+ [<dgndictation>]' % (' | '.join(formatters)): FormatText,
 
