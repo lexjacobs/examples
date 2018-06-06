@@ -12,7 +12,7 @@ def set_enabled(enable):
     lib.menu_check(b'!Enable Speech Recognition', enable)
 
 def on_menu(item):
-    if item == '!Enable Speech Recognition':
+    if item == 'Enable Speech Recognition':
         set_enabled(not talon.enabled)
 
 app.register('menu', on_menu)
