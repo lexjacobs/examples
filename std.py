@@ -178,7 +178,7 @@ keymap.update({
     'state let <dgndictation> [over]': ['let ', text],
     'state function <dgndictation> [over]': ['function ', text],
     'state return <dgndictation> [over]': ['return ', text],
-    'state variable <dgndictation> [over]': ['variable ', text],
+    'state variable <dgndictation> [over]': ['var ', text],
     'args <dgndictation>': ['()', Key('left'), text],
 
     '(%s)+ [<dgndictation>]' % (' | '.join(formatters)): FormatText,
