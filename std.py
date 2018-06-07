@@ -178,17 +178,19 @@ keymap.update({
     'state let <dgndictation> [over]': ['let ', text],
     'state function <dgndictation> [over]': ['function ', text],
     'state return <dgndictation> [over]': ['return ', text],
-    'state variable <dgndictation> [over]': ['var ', text],
+    'state (var|variable) <dgndictation> [over]': ['var ', text],
+    'state (def|define) <dgndictation> [over]': ['def ', text],
     'args <dgndictation>': ['()', Key('left'), text],
+    'click replace <dgndictation>': [lambda m: ctrl.mouse_click(button=0, times=2), text],
 
     '(%s)+ [<dgndictation>]' % (' | '.join(formatters)): FormatText,
 
-    'tab':   Key('tab'),
-    'tarp':   Key('shift-tab'),
-    'left':  Key('left'),
+    'tab': Key('tab'),
+    'tarp': Key('shift-tab'),
+    'left': Key('left'),
     'right': Key('right'),
-    'up':    Key('up'),
-    'down':  Key('down'),
+    'up': Key('up'),
+    'down': Key('down'),
 
     'delete': Key('backspace'),
 
@@ -463,7 +465,6 @@ def select_text_to_right_of_cursor(m):
         press('cmd-c')
         press('left')
     textRight = clipboardText.get()
-    print('text captured',textRight)
     result = textRight.find(key)
     if result == -1:
         return
@@ -474,8 +475,26 @@ def select_text_to_right_of_cursor(m):
     for i in range(0, len(key)):
         press('shift-right', wait=0)
 
+def select_from_cursor_through_text(m):
+    key = join_words(parse_words(m)).lower()
+    with clip.capture() as clipboardText:
+        press('cmd-shift-right')
+        press('cmd-c')
+        press('left')
+    textRight = clipboardText.get()
+    result = textRight.find(key)
+    if result == -1:
+        return
+    # cursor over to the found key text
+    for i in range(0, result):
+        press('shift-right', wait=0)
+    # now select the matching key text
+    for i in range(0, len(key)):
+        press('shift-right', wait=0)
+
 keymap.update({
-    'crew <dgndictation> [over]' : select_text_to_right_of_cursor
+    'crew <dgndictation> [over]' : select_text_to_right_of_cursor,
+    'crew select <dgndictation> [over]' : select_from_cursor_through_text
 })
 
 ctx.keymap(keymap)
