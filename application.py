@@ -16,6 +16,7 @@ keymap = {
     'application adam': open_application('atom'),
     'application code': open_application('code.app'),
     'application developer': open_application('developer'),
+    'application doctor': open_application('docker'),
     'application firefox': open_application('firefox.app'),
     'application I term': open_application('iterm'),
     'application messages': open_application('messages'),
