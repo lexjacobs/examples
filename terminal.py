@@ -6,7 +6,7 @@ ctx = Context('terminal', func=lambda app, win: any(
     t in app.bundle for t in terminals))
 
 keymap = {
-    'cd back': 'cd -; ls -a;\n',
+    'cd last': 'cd -; ls -a;\n',
     'cd develop': 'cd ~/develop; ls -a;\n',
     'cd home': 'cd ~; ls -a;\n',
     'cd parent': 'cd ..; ls -a;\n',
