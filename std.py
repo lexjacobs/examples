@@ -458,7 +458,7 @@ keymap.update({
     'scroll bottom': [Key('cmd-down')],
 })
 
-def select_text_to_right_of_cursor(m):
+def select_text_to_right_of_cursor(m, mod):
     key = join_words(parse_words(m)).lower()
     with clip.capture() as clipboardText:
         press('cmd-shift-right')
@@ -470,31 +470,14 @@ def select_text_to_right_of_cursor(m):
         return
     # cursor over to the found key text
     for i in range(0, result):
-        press('right', wait=0)
-    # now select the matching key text
-    for i in range(0, len(key)):
-        press('shift-right', wait=0)
-
-def select_from_cursor_through_text(m):
-    key = join_words(parse_words(m)).lower()
-    with clip.capture() as clipboardText:
-        press('cmd-shift-right')
-        press('cmd-c')
-        press('left')
-    textRight = clipboardText.get()
-    result = textRight.find(key)
-    if result == -1:
-        return
-    # cursor over to the found key text
-    for i in range(0, result):
-        press('shift-right', wait=0)
+        press(mod, wait=0)
     # now select the matching key text
     for i in range(0, len(key)):
         press('shift-right', wait=0)
 
 keymap.update({
-    'crew <dgndictation> [over]' : select_text_to_right_of_cursor,
-    'crew select <dgndictation> [over]' : select_from_cursor_through_text
+    'crew <dgndictation> [over]': lambda m: select_text_to_right_of_cursor(m, mod='right'),
+    'crew select <dgndictation> [over]': lambda m: select_text_to_right_of_cursor(m, mod='shift-right'),
 })
 
 ctx.keymap(keymap)
