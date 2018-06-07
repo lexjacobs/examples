@@ -31,6 +31,7 @@ keymap = {
     'word them': 'vim',
     'word will': 'twilio',
     'word with': 'width',
+    'word while': 'wow',
     'shrink <dgndictation>': shrink_word,
 }
 

@@ -1,7 +1,15 @@
-from talon.voice import Context, Rep, talon
-# from user.utils import parse_words_as_integer
-
 import itertools
+
+# Useful for identifying app/window information for context selection
+def context_func(app, win):
+    print('---')
+    # print(app)
+    print(app.bundle)
+    print(win)
+    print(win.title)
+    print(win.doc)
+    print('---')
+    return True
 
 number_conversions = {
     'oh': '0', # 'oh' => zero
@@ -38,18 +46,3 @@ def parse_words_as_integer(words):
 
     # Create merged number string and convert to int
     return int(''.join(normalized_number_values))
-
-
-ctx = Context('repeater')
-
-def repeat(m):
-    repeat_count = parse_words_as_integer(m._words[1:])
-
-    if repeat_count != None and repeat_count >= 2:
-        repeater = Rep(repeat_count - 1)
-        repeater.ctx = talon
-        return repeater(None)
-
-ctx.keymap({
-    'repeat (0 | oh | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9)+': repeat,
-})
