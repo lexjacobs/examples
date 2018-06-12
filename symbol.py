@@ -9,7 +9,7 @@ keymap = {
     'crunder': '_',
     'dollar [sign]': '$',
     'dot js': '.js',
-    'opera fat': ' =>',
+    'open fat': ' =>',
     'glitch': ['`', '`', Key('left')],
     'junk': Key('backspace'),
     'minus twice': '--',
