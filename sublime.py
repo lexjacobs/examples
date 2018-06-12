@@ -113,8 +113,9 @@ keymap = {
     # 'dear' + optional_numerals: jump_to_eol_and(lambda: None),
     'smear' + optional_numerals: jump_to_eol_and(jump_to_nearly_end_of_line),
     'trundle': toggle_comments,
+    'trundle super': Key('cmd-alt-/'),
     'trundle' + numerals: jump_to_bol_and(toggle_comments),
-    'jolt': Key('cmd-x cmd-v cmd-v'),
+    'jolt': Key('cmd-shift-d'),
 
     'snipline' + optional_numerals: jump_to_bol_and(snipline),
     'snipline super': Key('ctrl-shift-k'),

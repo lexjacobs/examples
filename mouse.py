@@ -53,6 +53,10 @@ keymap = {
     'click shift double': adv_click(0, 'shift', times=2),
     'mouse corner': lambda m: ctrl.mouse(0, 0),
     'mouse grid (1|2|3|4|5|6|7|8|9)': mouse_grid,
+    'move up': lambda m: ctrl.mouse(0, 0, dx=0, dy=-10),
+    'move right': lambda m: ctrl.mouse(0, 0, dx=10, dy=0),
+    'move left': lambda m: ctrl.mouse(0, 0, dx=-10, dy=0),
+    'move down': lambda m: ctrl.mouse(0, 0, dx=0, dy=10), 
 }
 
 ctx.keymap(keymap)

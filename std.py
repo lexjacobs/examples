@@ -172,6 +172,7 @@ keymap.update({
     'period <dgndictation> [over]': ['. ', sentence_text],
 
     'marco <dgndictation> [over]': [Key('cmd-f'), text, Key('enter')],
+    'assign <dgndictation> [over]': [' = ', text],
     'state import <dgndictation> [over]': ['import ', text],
     'state class <dgndictation> [over]': ['class ', text],
     'state const <dgndictation> [over]': ['const ', text],

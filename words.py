@@ -12,6 +12,7 @@ keymap = {
     'word parse integer': ['parseInt()', Key('left')],
 
     'word and': 'end',
+    'word adam': 'atom',
     'word cycling': 'cyclom',
     'word define': 'def ',
     'word doctor': 'docker',
@@ -29,6 +30,7 @@ keymap = {
     'word string': 'JSON.stringify',
     'word pseudo-\\\\pseudo': 'sudo ',
     'word them': 'vim',
+    'word two strings': 'toString',
     'word will': 'twilio',
     'word with': 'width',
     'word while': 'wow',

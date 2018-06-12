@@ -23,6 +23,7 @@ keymap = {
     'application music': open_application('itunes'),
     'application skype': open_application('skype'),
     'application slacker': open_application('slack'),
+    'application sublime': open_application('sublime text'),
     'application terminal': open_application('terminal'),
     'application tree': open_application('sourcetree'),
     'application zoom': open_application('zoom'),
