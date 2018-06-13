@@ -33,34 +33,34 @@ class NoiseModel:
         now = time.time()
         if noise == 'pop':
             ctrl.mouse_click(button=0, hold=16000)
-        elif noise == 'hiss_start':
-            if now - self.hiss_last < 0.25:
-                # removing click and drag for now
-                # ctrl.mouse_click(button=self.button, down=True)
-                self.hiss_last = now
-                self.dragging = True
-            else:
-                self.mouse_origin = self.mouse_last
-            self.hiss_start = now
-        elif noise == 'hiss_end':
-            if self.dragging:
-
-                # removing click and drag for now
-                # ctrl.mouse_click(button=self.button, up=True)
-                self.dragging = False
-            else:
-                duration = time.time() - self.hiss_start
-
-                # 0.5 hiss or greater triggers right-click
-                if duration > 0.5:
-                    self.button = 1
-                    ctrl.mouse_click(button=1)
-                    self.hiss_last = now
-                # deleting clicking for now
-                # elif duration > 0.3:
-                #     self.button = 0
-                #     ctrl.mouse_click(button=0)
-                #     self.hiss_last = now
-            self.hiss_start = 0
+        # elif noise == 'hiss_start':
+        #     if now - self.hiss_last < 0.25:
+        #         # removing click and drag for now
+        #         # ctrl.mouse_click(button=self.button, down=True)
+        #         self.hiss_last = now
+        #         self.dragging = True
+        #     else:
+        #         self.mouse_origin = self.mouse_last
+        #     self.hiss_start = now
+        # elif noise == 'hiss_end':
+        #     if self.dragging:
+        #
+        #         # removing click and drag for now
+        #         # ctrl.mouse_click(button=self.button, up=True)
+        #         self.dragging = False
+        #     else:
+        #         duration = time.time() - self.hiss_start
+        #
+        #         # 0.5 hiss or greater triggers right-click
+        #         if duration > 0.5:
+        #             self.button = 1
+        #             ctrl.mouse_click(button=1)
+        #             self.hiss_last = now
+        #         # deleting clicking for now
+        #         # elif duration > 0.3:
+        #         #     self.button = 0
+        #         #     ctrl.mouse_click(button=0)
+        #         #     self.hiss_last = now
+        #     self.hiss_start = 0
 
 model = NoiseModel()
