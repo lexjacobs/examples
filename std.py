@@ -183,6 +183,7 @@ keymap.update({
     'state (def|define) <dgndictation> [over]': ['def ', text],
     'args <dgndictation>': ['()', Key('left'), text],
     'click replace <dgndictation>': [lambda m: ctrl.mouse_click(button=0, times=2), text],
+    'replace last <dgndictation>': [Key('alt-backspace'), text],
 
     '(%s)+ [<dgndictation>]' % (' | '.join(formatters)): FormatText,
 
