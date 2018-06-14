@@ -27,6 +27,32 @@ alpha.update({'command option %s' % k: Key('cmd-alt-%s' % v) for k, v in alnum})
 alpha.update({'option %s' % k: Key('alt-%s' % v) for k, v in alnum})
 alpha.update({'option shift %s' % k: Key('alt-shift-%s' % v) for k, v in alnum})
 
+numerals = {
+    'ten': '10',
+    'eleven': '11',
+    'twelve': '12',
+    'thirteen': '13',
+    'fourteen': '14',
+    'fifteen': '15',
+    'sixteen': '16',
+    'seventeen': '17',
+    'eighteen': '18',
+    'nineteen': '19',
+    'twenty': '20',
+    'thirty': '30',
+    'forty': '40',
+    'fifty': '50',
+    'sixty': '60',
+    'seventy': '70',
+    'eighty': '80',
+    'ninety': '90',
+    'hundred': '00',
+    'thousand': '000',
+    'million': '000000',
+}
+
+alpha.update(numerals)
+
 mapping = {
     'semicolon': ';',
     'new-line': '\n',
@@ -168,6 +194,7 @@ keymap.update({
     'sentence <dgndictation> [over]': [' ', sentence_text],
     'champ <dgndictation> [over]': sentence_text,
     'comma <dgndictation> [over]': [', ', text],
+    'dot <dgndictation> [over]': ['.', text],
     'more <dgndictation> [over]': [' ', text],
     'period <dgndictation> [over]': ['. ', sentence_text],
 
