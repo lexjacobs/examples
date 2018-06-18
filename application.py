@@ -14,6 +14,7 @@ def open_application(application):
 
 keymap = {
     'application adam': open_application('atom'),
+    'application chrome': open_application('google chrome'),
     'application code': open_application('code.app'),
     'application developer': open_application('developer'),
     'application doctor': open_application('docker'),
@@ -25,6 +26,8 @@ keymap = {
     'application slacker': open_application('slack'),
     'application sublime': open_application('sublime text'),
     'application terminal': open_application('terminal'),
+    'application text': open_application('textEdit'),
+    'application video': open_application('vlc'),
     'application tree': open_application('sourcetree'),
     'application zoom': open_application('zoom'),
     'preffies': Key('cmd-,'),

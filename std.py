@@ -48,7 +48,6 @@ numerals = {
     'ninety': '90',
     'hundred': '00',
     'thousand': '000',
-    'million': '000000',
 }
 
 alpha.update(numerals)
@@ -64,6 +63,7 @@ token_replace = {
     'et cetera': 'etc',
     'e-mail': 'email',
     'I\\pronoun': 'I',
+    'I\'ll': 'I\'ll',
     'I\'m': 'I\'m',
     'I\'ve': 'I\'ve',
     'I\'d': 'I\'d',
@@ -206,6 +206,7 @@ keymap.update({
     'state let <dgndictation> [over]': ['let ', text],
     'state function <dgndictation> [over]': ['function ', text],
     'state return <dgndictation> [over]': ['return ', text],
+    'state while <dgndictation> [over]': ['while ()', Key('left'), text],
     'state (var|variable) <dgndictation> [over]': ['var ', text],
     'state (def|define) <dgndictation> [over]': ['def ', text],
     'args <dgndictation>': ['()', Key('left'), text],

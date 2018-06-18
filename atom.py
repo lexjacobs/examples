@@ -149,6 +149,8 @@ keymap = {
     'trail <dgndictation>': find_previous,
 
     'tools beautify': Key('ctrl-alt-b'),
+    'tools get': Key('ctrl-shift-9'),
+    'tools tree': Key('cmd-|'),
 
     'shackle': Key('cmd-l'),
     'select range' + numerals: select_lines,
