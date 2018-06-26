@@ -10,7 +10,7 @@ alpha = {}
 alpha.update(dict(alnum))
 # alpha.update({'ship %s' % word: letter for word, letter in zip(alpha_alt, string.ascii_uppercase)})
 
-extra_modifier_key_targets = {'left':'left','right':'right','up':'up','down':'down','minus':'-','plus':'+','(return|enter)':'enter','slash':'/','delete':'backspace','space':'space','index right':']','index left':'[','escape':'esc','home':'home','end':'end'}
+extra_modifier_key_targets = {'left':'left','right':'right','up':'up','down':'down','minus':'-','plus':'+','(return|enter)':'enter','slash':'/','backslash':'\\','delete':'backspace','space':'space','index right':']','index left':'[','escape':'esc','home':'home','end':'end'}
 for (k, v) in extra_modifier_key_targets.items():
     alnum.append((k, v))
 

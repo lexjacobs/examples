@@ -33,7 +33,7 @@ sleepy.keymap({
     'talon wake': lambda m: set_enabled(True),
     'talon park': park_mouse,
 
-    'dragon mode': [lambda m: set_enabled(False), lambda m: engine.mimic('wake up'.split())],
-    'talon mode': [lambda m: set_enabled(True), lambda m: engine.mimic('go to sleep'.split())],
+    'dragon wake': [lambda m: set_enabled(False), lambda m: engine.mimic('wake up'.split())],
+    'talon wake': [lambda m: set_enabled(True), lambda m: engine.mimic('go to sleep'.split())],
 })
 sleep_group.load()
