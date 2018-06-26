@@ -190,19 +190,19 @@ keymap.update(alpha)
 keymap.update({
     'oh <dgndictation> [over]': text,
     'word <dgnwords>': word,
-
+ 
     'sentence <dgndictation> [over]': [' ', sentence_text],
     'champ <dgndictation> [over]': sentence_text,
     'comma <dgndictation> [over]': [', ', text],
     'dot <dgndictation> [over]': ['.', text],
     'more <dgndictation> [over]': [' ', text],
     'period <dgndictation> [over]': ['. ', sentence_text],
-
     'marco <dgndictation> [over]': [Key('cmd-f'), text, Key('enter')],
+    'marco project <dgndictation> [over]': [Key('cmd-shift-f'), text, Key('enter')],
     'assign <dgndictation> [over]': [' = ', text],
     'state import <dgndictation> [over]': ['import ', text],
     'state class <dgndictation> [over]': ['class ', text],
-    'state const <dgndictation> [over]': ['const ', text],
+    'state constant <dgndictation> [over]': ['const ', text],
     'state let <dgndictation> [over]': ['let ', text],
     'state function <dgndictation> [over]': ['function ', text],
     'state return <dgndictation> [over]': ['return ', text],

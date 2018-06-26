@@ -1,4 +1,4 @@
-import eye
+import eye_mouse
 from talon.api import lib
 from talon.voice import Context, ContextGroup, talon, ctrl
 from talon.engine import engine
@@ -19,7 +19,7 @@ def on_menu(item):
 
 def park_mouse(m):
     set_enabled(False)
-    eye.on_menu('Eye Tracking >> Control Mouse')
+    eye_mouse.on_menu('Eye Tracking >> Control Mouse')
     ctrl.mouse(0, 0)
 
 app.register('menu', on_menu)
