@@ -20,7 +20,7 @@ keymap = {
     'word import': 'import ',
     'word get': 'git',
     'word get hub': 'github',
-    'word gist': 'gist',
+    'word just': 'gist',
     'word hero': 'heroku',
     'word jason': 'JSON',
     'word no': 'null',

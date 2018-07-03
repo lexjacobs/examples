@@ -46,8 +46,8 @@ numerals = {
     'seventy': '70',
     'eighty': '80',
     'ninety': '90',
-    'hundred': '00',
-    'thousand': '000',
+    # 'hundred': '00',
+    # 'thousand': '000',
 }
 
 alpha.update(numerals)
@@ -150,7 +150,8 @@ formatters = {
 def FormatText(m):
     fmt = []
     for w in m._words:
-        if isinstance(w, Word):
+        # if isinstance(w, Word):
+        if isinstance(w, Word) and w.word in formatters:
             fmt.append(w.word)
     try:
         words = parse_words(m)
@@ -212,9 +213,9 @@ keymap.update({
     'args <dgndictation>': ['()', Key('left'), text],
     'click replace <dgndictation>': [lambda m: ctrl.mouse_click(button=0, times=2), text],
     'replace last <dgndictation>': [Key('alt-backspace'), text],
+    'tools tag <dgndictation>': ['<', text, '>', '</', text, '>'],
 
-    '(%s)+ [<dgndictation>]' % (' | '.join(formatters)): FormatText,
-
+    '(%s)+ [<dgndictation>] [over]' % (' | '.join(formatters)): FormatText,
     'tab': Key('tab'),
     'tarp': Key('shift-tab'),
     'left': Key('left'),
@@ -257,7 +258,7 @@ keymap.update({
     'quote': "'",
     'triple quote': "'''",
     # '(dot | period)': '.',
-    'dot': '.',
+    '(dot | point)': '.',
     '(comma | pebble)': ', ',
     'space': ' ',
     '[forward] slash': '/',
@@ -481,11 +482,11 @@ keymap.update({
     # 'last space': Key('cmd-alt-ctrl-left'),
 
     # 'scroll down': [Key('down')] * 30,
-    'scroll up': [Key('pageup')],
+    '(look | scroll) up': [Key('pageup')],
     # 'scroll up': [Key('up')] * 30,
-    'scroll down': [Key('pagedown')],
-    'scroll top': [Key('cmd-up')],
-    'scroll bottom': [Key('cmd-down')],
+    '(look | scroll) down': [Key('pagedown')],
+    '(look | scroll) top': [Key('cmd-up')],
+    '(look | scroll) bottom': [Key('cmd-down')],
 })
 
 def select_text_to_right_of_cursor(m, mod):

@@ -11,8 +11,8 @@ def is_on_main(p):
 class MonSnap:
     def __init__(self):
         tap.register(tap.MMOVE, self.on_move)
-        cron.after('10s', lambda: tracker.register('gaze', self.on_gaze))
-        # tracker.register('gaze', self.on_gaze)
+        # cron.after('10s', lambda: tracker.register('gaze', self.on_gaze))
+        tracker.register('gaze', self.on_gaze)
 
         self.saved_mouse = None
         self.main_mouse = False
@@ -46,4 +46,4 @@ class MonSnap:
             self.saved_mouse = p
         self.main_mouse = on_main
 
-snap = MonSnap()
+# snap = MonSnap()

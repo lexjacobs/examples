@@ -1,3 +1,4 @@
+# NOTE: NOT A COMPLETE IMPLEMENTATION, IN PROCESS WITH CONVERTING ATOM PACKAGE
 from talon.voice import Key, press, Str, Context
 
 ctx = Context('sublime', bundle='com.sublimetext.3')
