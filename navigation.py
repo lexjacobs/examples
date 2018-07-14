@@ -34,8 +34,6 @@ keymap = {
     # 'wonkrim': Key('alt-ctrl-left'),
     # 'wonkrish': Key('alt-ctrl-right'),
     'locky': Key('alt-left'),
-    # 'locky soup': [Key('alt-left'),Key('alt-left')],
-    # 'locky trace': [Key('alt-left'),Key('alt-left'),Key('alt-left')],
     'rocky': Key('alt-right'),
     'ricky': Key('cmd-right'),
     'lefty': Key('cmd-left'),

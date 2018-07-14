@@ -191,7 +191,7 @@ keymap.update(alpha)
 keymap.update({
     'oh <dgndictation> [over]': text,
     'word <dgnwords>': word,
- 
+
     'sentence <dgndictation> [over]': [' ', sentence_text],
     'champ <dgndictation> [over]': sentence_text,
     'comma <dgndictation> [over]': [', ', text],
@@ -213,6 +213,7 @@ keymap.update({
     'args <dgndictation>': ['()', Key('left'), text],
     'click replace <dgndictation>': [lambda m: ctrl.mouse_click(button=0, times=2), text],
     'replace last <dgndictation>': [Key('alt-backspace'), text],
+    'replace next <dgndictation>': [Key('alt-shift-right'), text],
     'tools tag <dgndictation>': ['<', text, '>', '</', text, '>'],
 
     '(%s)+ [<dgndictation>] [over]' % (' | '.join(formatters)): FormatText,

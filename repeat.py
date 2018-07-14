@@ -15,11 +15,11 @@ def repeat(m):
         return repeater(None)
 
 ctx.keymap({
-    'wink': Rep(1),
+    # 'wink': Rep(1),
     'creek': RepPhrase(1),
-    'soup': Rep(2),
-    'trace': Rep(3),
-    'quarr': Rep(4),
-    'fypes': Rep(5),
-    'repeat (0 | oh | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9)+': repeat,
+    # 'soup': Rep(2),
+    # 'trace': Rep(3),
+    # 'quarr': Rep(4),
+    # 'fypes': Rep(5),
+    '(rep | repeat) (0 | oh | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9)+': repeat,
 })

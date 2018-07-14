@@ -133,8 +133,8 @@ keymap = {
     'trundle' + numerals: jump_to_bol_and(toggle_comments),
     'jolt': Key('cmd-x cmd-v cmd-v'),
 
-    'snipline' + optional_numerals: jump_to_bol_and(snipline),
-    'snipline super': Key('ctrl-shift-k'),
+    # 'snip line' + optional_numerals: jump_to_bol_and(snipline),
+    'snip line super': Key('ctrl-shift-k'),
 
     # 'snipple': [Key(atom_hotkey), Key(COMMANDS.DELETE_TO_BOL)],
     # 'snipper': [Key(atom_hotkey), Key(COMMANDS.DELETE_TO_EOL)],
