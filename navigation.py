@@ -30,17 +30,10 @@ keymap = {
     'slurp': Key('backspace delete'),
     'trough': Key('alt-backspace'),
 
-    # 'shocker': [Key('cmd-left enter up')],
-    # 'wonkrim': Key('alt-ctrl-left'),
-    # 'wonkrish': Key('alt-ctrl-right'),
     'locky': Key('alt-left'),
     'rocky': Key('alt-right'),
     'ricky': Key('cmd-right'),
     'lefty': Key('cmd-left'),
-    # '(left | crimp)': Key('left'),
-    # '(right | chris)': Key('right'),
-    # 'jeep': Key('up'),
-    # '(down | dune | doom)':  Key('down'),
 
     # selecting
     'snatch': Key('cmd-x'),

@@ -12,8 +12,9 @@ def get_selection():
 def apply_to_line(fn):
     def wrap(m):
         press('shift-alt-left')
-        sel = get_selection()
         time.sleep(.1)
+        sel = get_selection()
+        time.sleep(.05)
         Str(fn(sel))(None)
     return wrap
 

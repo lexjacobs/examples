@@ -68,16 +68,6 @@ def previous_track(m):
     run_script(script)
 
 
-# def set_volume(m):
-#     volume = text_to_number(m)
-#     if volume == -1:
-#         return  # Give notification when that is supported
-#
-#     volume = str(volume)
-#     script = '''tell app "iTunes" to set sound volume to ''' + volume
-#     run_script(script)
-
-
 def set_volume(m):
     volume = text_to_number(m)
     if volume == -1:
@@ -92,8 +82,7 @@ keymap = {
     'play pause': play_pause,
     'track next': next_track,
     'track last': previous_track,
-    'set volume <dgndictation>': set_volume,
-    # 'set system volume <dgndictation>': set_system_volume,
+    'set volume <dgndictation>': set_volume
 }
 
 

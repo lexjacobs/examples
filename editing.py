@@ -18,4 +18,3 @@ keymap = {
 }
 
 ctx.keymap(keymap)
-# lambda m: time.sleep(2.05),
