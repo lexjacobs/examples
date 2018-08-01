@@ -1,6 +1,6 @@
 import time
 
-from talon import ctrl
+from talon import ctrl, voice
 from talon import tap
 from talon.audio import noise
 from talon.track.geom import Point2d
@@ -31,7 +31,9 @@ class NoiseModel:
                 # ctrl.mouse_click(x, y, button=0, down=True)
 
     def on_noise(self, noise):
-        now = time.time()
+        # now = time.time()
+        if not voice.talon.enabled:
+            return
         if noise == 'pop' and eye_zoom_mouse.zoom_mouse.enabled:
             return
         if noise == 'pop':
