@@ -5,6 +5,7 @@ import time
 ctx = Context('editing')
 
 keymap = {
+    'commander': Key('cmd-a'),
     'sage': Key('cmd-s'),
     'dizzle': Key('cmd-z'),
     'jolt': Key('shift-cmd-right right shift-cmd-left cmd-c right return cmd-v'),

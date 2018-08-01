@@ -190,6 +190,7 @@ keymap.update({
 
     'sentence <dgndictation> [over]': [' ', sentence_text],
     'champ <dgndictation> [over]': sentence_text,
+    'coal gap <dgndictation> [over]': [': ', text],
     'comma <dgndictation> [over]': [', ', text],
     'dot <dgndictation> [over]': ['.', text],
     'more <dgndictation> [over]': [' ', text],
@@ -313,6 +314,7 @@ keymap.update({
     'state (def | deaf | deft)': 'def ',
     'state if': ['if ()', Key('left')],
     'state else': [' else {}', Key('left'), Key('enter')],
+    'state else super': [' else {}', Key('left'), Key('enter enter up tab')],
     'state else if': [' else if ()', Key('left')],
     'state while': ['while ()', Key('left')],
     'state for': ['for ()', Key('left')],
@@ -387,6 +389,27 @@ keymap.update({
     '(look | scroll) bottom': [Key('cmd-down')],
 })
 
+def select_text_to_left_of_cursor(m):
+    words = parse_words(m)
+    if not words:
+        return
+    old = clip.get()
+    key = join_words(words).lower()
+    press("shift-home", wait=2000)
+    press("cmd-c", wait=2000)
+    press("right", wait=2000)
+    text_left = clip.get()
+    clip.set(old)
+    result = text_left.find(key)
+    if result == -1:
+        return
+    # cursor over to the found key text
+    for i in range(0, len(text_left) - result):
+        press("left", wait=0)
+    # now select the matching key text
+    for i in range(0, len(key)):
+        press("shift-right")
+
 def select_text_to_right_of_cursor(m, mod):
     key = join_words(parse_words(m)).lower()
     with clip.capture() as clipboardText:
@@ -406,6 +429,7 @@ def select_text_to_right_of_cursor(m, mod):
 
 keymap.update({
     'crew <dgndictation> [over]': lambda m: select_text_to_right_of_cursor(m, mod='right'),
+    'trail <dgndictation> [over]': lambda m: select_text_to_left_of_cursor(m),
     'crew select <dgndictation> [over]': lambda m: select_text_to_right_of_cursor(m, mod='shift-right'),
 })
 

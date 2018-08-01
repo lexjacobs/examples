@@ -20,6 +20,8 @@ keymap = {
     'word doctor': 'docker',
     'word for each': 'forEach',
     'word import': 'import ',
+    'word display in line': 'display: inline-block;',
+    'word display block': 'display: block;',
     'word get': 'git',
     'word get hub': 'github',
     'word glitch': 'glitch',
@@ -37,6 +39,7 @@ keymap = {
     'word will': 'twilio',
     'word with': 'width',
     'word while': 'wow',
+    'word zeppelin': 'zeplin',
     'shrink <dgndictation>': shrink_word,
 }
 

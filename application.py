@@ -14,6 +14,7 @@ def open_application(application):
 
 keymap = {
     'application adam': open_application('atom'),
+    'application activity': open_application('activity monitor'),
     'application chrome': open_application('google chrome'),
     'application code': open_application('code.app'),
     'application developer': open_application('developer'),

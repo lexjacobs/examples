@@ -1,4 +1,4 @@
-import threading
+import threading, logging
 from talon.voice import Context, Rep, talon
 from talon.audio import noise
 from talon import cron
@@ -32,9 +32,9 @@ class Repeater:
             with self.lock:
                 self.cancel()
                 self.job = cron.after(self.initial_delay, self.initial)
-            print('HISS START')
+            logging.debug('HISS START')
         elif noise == 'hiss_end' and self.job:
-            print('HISS STOP')
+            logging.debug('HISS STOP')
             self.cancel()
 
     def initial(self):
@@ -43,7 +43,7 @@ class Repeater:
         self.repeat()
 
     def repeat(self):
-        print('REPEAT')
+        logging.debug('REPEAT')
         repeater = Rep(1)
         repeater.ctx = talon
         repeater(None)
