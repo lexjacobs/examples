@@ -1,5 +1,6 @@
 from talon.voice import Word, Context, Key, Rep, Str, press
 from talon import ui
+import time
 
 apps = {}
 
@@ -10,6 +11,8 @@ def switch_app(m):
     for app in ui.apps():
         if app.name == full:
             app.focus()
+            # TODO: replace sleep with a check to see when it is in foreground
+            time.sleep(0.25)
             break
 
 def short_application(m, app):
@@ -32,7 +35,7 @@ def update_lists():
     global apps
     new = {}
     for app in ui.apps():
-        if not app.windows():
+        if app.background and not app.windows():
             continue
         words = app.name.split(' ')
         for word in words:
@@ -45,8 +48,7 @@ def update_lists():
     apps = new
 
 def ui_event(event, arg):
-    if event in ('app_activate', 'app_launch', 'app_close', 'win_open', 'win_close'):
-        update_lists()
+    update_lists()
 
 ui.register('', ui_event)
 update_lists()
