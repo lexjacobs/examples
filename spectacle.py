@@ -19,8 +19,8 @@ keymap = {
     # 'wendy upper right': Key('cmd-ctrl-right'),
     # 'wendy lower right': Key('cmd-ctrl-shift-right'),
 
-    # 'wendy next display': Key('cmd-ctrl-alt-right'),
-    # 'wendy previous display': Key('cmd-ctrl-alt-left'),
+    'wendy next': Key('cmd-ctrl-alt-f6'),
+    'wendy last': Key('cmd-ctrl-alt-f5'),
 
     # 'wendy next third': Key('ctrl-alt-right'),
     # 'wendy previous third': Key('ctrl-alt-left'),
@@ -30,6 +30,7 @@ keymap = {
 
     'wendy undo': Key('cmd-ctrl-alt-f7'),
     # 'wendy redo': Key('cmd-alt-shift-z'),
+    'wendy restore': Key('cmd-ctrl-r') # from Display Maid
 
 }
 
