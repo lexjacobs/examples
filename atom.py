@@ -150,7 +150,7 @@ keymap = {
 
     'tools beautify': Key('ctrl-alt-b'),
     'tools get': Key('ctrl-shift-9'),
-    'tools tree': Key('cmd-|'),
+    'tools tree': Key('ctrl-0'),
 
     'shackle': Key('cmd-l'),
     'select range' + numerals: select_lines,

@@ -211,7 +211,10 @@ keymap.update({
     'click replace <dgndictation>': [lambda m: ctrl.mouse_click(button=0, times=2), text],
     'replace last <dgndictation>': [Key('alt-backspace'), text],
     'replace next <dgndictation>': [Key('alt-shift-right'), text],
+    'tools emoji': Key('cmd-ctrl-space'),
     'tools tag <dgndictation>': ['<', text, '>', '</', text, '>'],
+    'tools tag': Key('< > left'),
+
 
     '(%s)+ [<dgndictation>] [over]' % (' | '.join(formatters)): FormatText,
     'tab': Key('tab'),

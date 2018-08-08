@@ -1,37 +1,39 @@
-from talon.voice import Context, Key, Str
+from talon.voice import Context, Key, Str, ui
 import time
 
 ctx = Context('application_launcher')
 
+# will launch if not already open
 def open_application(application):
-    def open_new(m):
-        Key('alt-space')(None)
-        time.sleep(0.2)
-        Str(application)(None)
-        time.sleep(0.2)
-        Key('return')(None)
-    return open_new
 
+    def open_or_switch(m):
+        ui.launch(bundle=application)
+    return open_or_switch
+
+
+
+# get bundle: osascript -e 'id of app "app-name"'
 keymap = {
-    'application adam': open_application('atom'),
-    'application activity': open_application('activity monitor'),
-    'application chrome': open_application('google chrome'),
-    'application code': open_application('code.app'),
-    'application developer': open_application('developer'),
-    'application doctor': open_application('docker'),
-    'application firefox': open_application('firefox.app'),
-    'application I term': open_application('iterm'),
-    'application messages': open_application('messages'),
-    'application music': open_application('itunes'),
-    'application reminder': open_application('reminders'),
-    'application skype': open_application('skype'),
-    'application slacker': open_application('slack'),
-    'application sublime': open_application('sublime text'),
-    'application terminal': open_application('terminal'),
-    'application text': open_application('textEdit'),
-    'application video': open_application('vlc'),
-    'application tree': open_application('sourcetree'),
-    'application zoom': open_application('zoom'),
+    '(stratum|application adam)': open_application('com.github.atom'),
+    'application activity': open_application('com.apple.ActivityMonitor'),
+    '(chromie|application chrome)': open_application('com.google.Chrome'),
+    'application code': open_application('com.microsoft.VSCode'),
+    'application developer': open_application('org.mozilla.firefoxdeveloperedition'),
+    'application doctor': open_application('com.docker.docker'),
+    'application firefox': open_application('org.mozilla.firefox'),
+    '(termite|application I term)': open_application('com.googlecode.iterm2'),
+    '(chatter|application (message|messages))': open_application('com.apple.iChat'),
+    'application music': open_application('com.apple.iTunes'),
+    'application reminder': open_application('com.apple.reminders'),
+    'application skype': open_application('com.skype.skype'),
+    '(slacker|application slacker)': open_application('com.tinyspeck.slackmacgap'),
+    'application sublime': open_application('com.sublimetext.3'),
+    'application terminal': open_application('com.apple.Terminal'),
+    'application text': open_application('com.apple.TextEdit'),
+    'application video': open_application('org.videolan.vlc'),
+    'application tree': open_application('com.torusknot.SourceTreeNotMAS'),
+    'application zoom': open_application('us.zoom.xos'),
+
     'preffies': Key('cmd-,'),
     'marco': Key('cmd-f'),
     'marco project': Key('cmd-shift-f'),
