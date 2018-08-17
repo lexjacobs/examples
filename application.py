@@ -32,6 +32,7 @@ keymap = {
     'application text': open_application('com.apple.TextEdit'),
     'application video': open_application('org.videolan.vlc'),
     'application tree': open_application('com.torusknot.SourceTreeNotMAS'),
+    '(zeppelin|application zeppelin)': open_application('io.zeplin.osx'),
     'application zoom': open_application('us.zoom.xos'),
 
     'preffies': Key('cmd-,'),

@@ -4,8 +4,8 @@ ctx = Context('symbol')
 
 keymap = {
     'clamor': '!',
-    'coalgap': ': ',
-    'coalshock': [':', Key('enter')],
+    'coal gap': ': ',
+    'coal shock': [':', Key('enter')],
     'crunder': '_',
     'dollar [sign]': '$',
     'dot js': '.js',
@@ -14,12 +14,10 @@ keymap = {
     'minus twice': '--',
     'plus twice': '++',
     'questo': '?',
-    'randall': Key('esc'),
-    '(semi | semicolon | sunk)': ';',
+    'sunk': ';',
     'sinker': [Key('cmd-right ;')],
     'slurp': [Key('delete'), Key('backspace')],
     'spunk': Key('delete'),
-    'swipe super': ', ',
 }
 
 ctx.keymap(keymap)

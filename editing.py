@@ -14,8 +14,8 @@ keymap = {
     'snipple': Key('shift-cmd-left delete'),
     'snipper': Key('shift-cmd-right delete'),
     'snip line': [Key('cmd-right'), lambda m: time.sleep(0.05), Key('shift-cmd-left shift-cmd-left delete delete')],
-    'trundle': Key('cmd-/'),
-    'trundle super': [Key('/'), Key('*'), Key('*'), Key('/'), Key('left'), Key('left'), Key('return'), Key('return'), Key('up')],
+    'trussell': Key('cmd-/'),
+    'trussell super': [Key('/'), Key('*'), Key('*'), Key('/'), Key('left'), Key('left'), Key('return'), Key('return'), Key('up')],
 }
 
 ctx.keymap(keymap)

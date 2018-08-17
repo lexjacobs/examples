@@ -113,9 +113,9 @@ keymap = {
     # 'sprinkler'
     # 'dear' + optional_numerals: jump_to_eol_and(lambda: None),
     'smear' + optional_numerals: jump_to_eol_and(jump_to_nearly_end_of_line),
-    'trundle': toggle_comments,
-    'trundle super': Key('cmd-alt-/'),
-    'trundle' + numerals: jump_to_bol_and(toggle_comments),
+    'trussell': toggle_comments,
+    'trussell super': Key('cmd-alt-/'),
+    'trussell' + numerals: jump_to_bol_and(toggle_comments),
     'jolt': Key('cmd-shift-d'),
 
     # 'snip line' + optional_numerals: jump_to_bol_and(snipline),
