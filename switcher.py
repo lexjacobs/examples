@@ -1,12 +1,14 @@
 from talon.voice import Word, Context, Key, Rep, Str, press
 from talon import ui
 import time
+import os
 
-apps = {}
+running = {}
+launch = {}
 
 def switch_app(m):
-    name = str(m._words[1])
-    full = apps.get(name)
+    name = str(m['switcher.running'][0])
+    full = running.get(name)
     if not full: return
     for app in ui.apps():
         if app.name == full:
@@ -15,14 +17,21 @@ def switch_app(m):
             time.sleep(0.25)
             break
 
+def launch_app(m):
+    name = str(m['switcher.launch'][0])
+    path = launch.get(name)
+    if path:
+        ui.launch(path=path)
+
 ctx = Context('switcher')
-keymap = {
-    'focus {switcher.apps}': switch_app,
-}
-ctx.keymap(keymap)
+ctx.keymap({
+    'focus {switcher.running}': switch_app,
+    'launch {switcher.launch}': launch_app,
+})
 
 def update_lists():
-    global apps
+    global running
+    global launch
     new = {}
     for app in ui.apps():
         if app.background and not app.windows():
@@ -32,13 +41,27 @@ def update_lists():
             if word and not word in new:
                 new[word] = app.name
         new[app.name] = app.name
-    if set(new.keys()) == set(apps.keys()):
-        return
-    ctx.set_list('apps', new.keys())
-    apps = new
+    running = new
+    ctx.set_list('running', running.keys())
+
+    new = {}
+    for base in '/Applications', '/Applications/Utilities':
+        for name in os.listdir(base):
+            path = os.path.join(base, name)
+            name = name.rsplit('.', 1)[0]
+            new[name.lower()] = path.lower()
+            words = name.split(' ')
+            for word in words:
+                if word and word not in new:
+                    if len(name) > 6 and len(word) < 3:
+                        continue
+                    new[word.lower()] = path.lower()
+    launch = new
+    ctx.set_list('launch', launch.keys())
 
 def ui_event(event, arg):
-    update_lists()
+    if event in ('app_activate', 'app_launch', 'app_close', 'win_open', 'win_close'):
+        update_lists()
 
 ui.register('', ui_event)
 update_lists()

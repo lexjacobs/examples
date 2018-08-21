@@ -7,6 +7,7 @@ ctx = Context('terminal', func=lambda app, win: any(
 
 keymap = {
     'cd last': 'cd -; ls -a;\n',
+    'cd desktop': 'cd ~/Desktop; ls -a;\n',
     'cd develop': 'cd ~/develop; ls -a;\n',
     'cd home': 'cd ~; ls -a;\n',
     'cd parent': 'cd ..; ls -a;\n',

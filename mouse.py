@@ -1,7 +1,7 @@
 import eye_mouse
 import time
 from talon import ctrl, tap
-from talon.voice import Context
+from talon.voice import Context, Key
 from talon import ui
 
 ctx = Context('mouse')
@@ -51,6 +51,9 @@ keymap = {
     'click shift': adv_click(0, 'shift'),
     'click shift alt': adv_click(0, 'alt', 'shift'),
     'click shift double': adv_click(0, 'shift', times=2),
+    'click double cut': [lambda m: ctrl.mouse_click(button=0, times=2), Key('cmd-x')],
+    'click double copy': [lambda m: ctrl.mouse_click(button=0, times=2), Key('cmd-c')],
+    'click double paste': [lambda m: ctrl.mouse_click(button=0, times=2), Key('cmd-v')],
     'mouse corner': lambda m: ctrl.mouse(0, 0),
     'mouse grid (1|2|3|4|5|6|7|8|9)': mouse_grid,
     'move up': lambda m: ctrl.mouse(0, 0, dx=0, dy=-10),
