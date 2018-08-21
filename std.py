@@ -12,10 +12,11 @@ alpha.update(dict(alnum))
 # alpha.update({'ship %s' % word: letter for word, letter in zip(alpha_alt, string.ascii_uppercase)})
 
 # modifier key mappings
+fkeys = [(f'funky {i}', f'f{i}') for i in range(1, 13)]
 keys = [
     'left', 'right', 'up', 'down', 'shift', 'tab', 'escape', 'enter', 'space',
     'backspace', 'delete', 'home', 'pageup', 'pagedown', 'end',
-] + [f'f{i}' for i in range(1, 13)]
+]
 keys = alnum + [(k, k) for k in keys]
 keys += [
     ('tilde', '`'),
@@ -30,9 +31,10 @@ keys += [
     ('minus', '-'),
     ('equals', '='),
     ('plus', '+'),
-    ('delete', 'backspace'),
-]
+    ('delete', 'backspace')
+] + fkeys
 
+alpha.update({word: Key(key) for word, key in fkeys})
 alpha.update({'shift %s' % k: Key('shift-%s' % v) for k, v in keys})
 alpha.update({'option %s' % k: Key('alt-%s' % v) for k, v in keys})
 alpha.update({'option shift %s' % k: Key('alt-shift-%s' % v) for k, v in keys})
@@ -44,7 +46,6 @@ alpha.update({'command control %s' % k: Key('cmd-ctrl-%s' % v) for k, v in keys}
 alpha.update({'command shift %s' % k: Key('cmd-shift-%s' % v) for k, v in keys})
 alpha.update({'command option %s' % k: Key('cmd-alt-%s' % v) for k, v in keys})
 alpha.update({'command option shift %s' % k: Key('cmd-alt-shift-%s' % v) for k, v in keys})
-
 
 numerals = {
     'ten': '10',
@@ -215,6 +216,7 @@ keymap.update({
     'coal gap <dgndictation> [over]': [': ', text],
     'comma <dgndictation> [over]': [', ', text],
     'dot <dgndictation> [over]': ['.', text],
+    'glitchy <dgndictation> [over]': ['`', text, '`'],
     'more <dgndictation> [over]': [' ', text],
     'period <dgndictation> [over]': ['. ', sentence_text],
     'marco <dgndictation> [over]': [Key('cmd-f'), text, Key('enter')],
