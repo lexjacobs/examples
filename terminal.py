@@ -9,6 +9,7 @@ keymap = {
     'cd last': 'cd -; ls -a;\n',
     'cd desktop': 'cd ~/Desktop; ls -a;\n',
     'cd develop': 'cd ~/develop; ls -a;\n',
+    'cd (download|downloads)': 'cd ~/Downloads; ls -a;\n',
     'cd home': 'cd ~; ls -a;\n',
     'cd parent': 'cd ..; ls -a;\n',
 
@@ -22,6 +23,7 @@ keymap = {
     'tools full-screen': Key('cmd-enter'),
     'tools exit': [Key('ctrl-c'), 'exit\n'],
     'window clear': Key('cmd-k'),
+    'tools (reset|refresh)': Key('ctrl-c up enter'),
 }
 
 ctx.keymap(keymap)

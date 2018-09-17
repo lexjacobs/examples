@@ -60,5 +60,9 @@ keymap = {
     'move right': lambda m: ctrl.mouse(0, 0, dx=10, dy=0),
     'move left': lambda m: ctrl.mouse(0, 0, dx=-10, dy=0),
     'move down': lambda m: ctrl.mouse(0, 0, dx=0, dy=10),
+    'scroll down': lambda m: ctrl.mouse_scroll(y=ui.active_window().frame.height/2),
+    'scroll up': lambda m: ctrl.mouse_scroll(y=-ui.active_window().frame.height/2),
+    'scroll left': lambda m: ctrl.mouse_scroll(x=-ui.active_window().frame.width/2),
+    'scroll right': lambda m: ctrl.mouse_scroll(x=ui.active_window().frame.width/2),
 }
 ctx.keymap(keymap)
