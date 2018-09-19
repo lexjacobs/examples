@@ -416,6 +416,9 @@ keymap.update({
     'look down': [Key('pagedown')],
     'look top': [Key('cmd-up')],
     'look bottom': [Key('cmd-down')],
+
+    'chain then': ['.then()', Key('left')],
+    'chain catch': ['.catch()', Key('left')],
 })
 
 def select_text_to_left_of_cursor(m):
