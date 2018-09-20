@@ -3,7 +3,14 @@ from talon import ctrl, clip
 from talon_init import TALON_HOME, TALON_PLUGINS, TALON_USER
 import string
 
-alpha_alt = 'air bat cap die each fail gone harm sit jury crash look mad near oil pit quest red sun trap urge vest whale box yes zip'.split()
+# original talon alphabet
+# alpha_alt = 'air bat cap die each fail gone harm sit jury crash look mad near oil pit quest red sun trap urge vest whale box yes zip'.split()
+
+# hybrid talon alphabet
+# alpha_alt = 'air bat cap (die|drum) each (fail|fine) (gone|gust) (harm|harp) sit jury (crash|crunch) look (mad|made) near oil pit (quest|quench) red sun trap urge vest whale (box|plex) (yes|yank) zip'.split()
+
+# new talon alphabet
+alpha_alt = 'air bat cap drum each fine gust harp sit jury crunch look made near oil pit quench red sun trap urge vest whale plex yank zip'.split()
 ###
 alnum = list(zip(alpha_alt, string.ascii_lowercase)) + [(str(i), str(i)) for i in range(0, 10)]
 
@@ -205,6 +212,10 @@ def FormatText(m):
 
 ctx = Context('input')
 
+def CursorText(s):
+  left, right = s.split('{.}', 1)
+  return [left + right, Key(' '.join(['left'] * len(right)))]
+
 keymap = {}
 keymap.update(alpha)
 keymap.update({
@@ -228,7 +239,7 @@ keymap.update({
     'state let <dgndictation> [over]': ['let ', text],
     'state function <dgndictation> [over]': ['function ', text],
     'state return <dgndictation> [over]': ['return ', text],
-    'state while <dgndictation> [over]': ['while ()', Key('left'), text],
+    'state while <dgndictation> [over]': CursorText('while ({.})') + [text],
     'state (var|variable) <dgndictation> [over]': ['var ', text],
     'state (def|define) <dgndictation> [over]': ['def ', text],
     'args <dgndictation>': ['()', Key('left'), text],
@@ -237,8 +248,7 @@ keymap.update({
     'replace next <dgndictation>': [Key('alt-shift-right'), text],
     'tools emoji': Key('cmd-ctrl-space'),
     'tools tag <dgndictation>': ['<', text, '>', '</', text, '>'],
-    'tools tag': Key('< > left'),
-
+    'tools tag': CursorText('<{.}>'),
 
     '(%s)+ [<dgndictation>] [over]' % (' | '.join(formatters)): FormatText,
     'tab': Key('tab'),
@@ -312,7 +322,7 @@ keymap.update({
     'run get push origin': 'git push origin ',
     'run get push origin master': 'git push origin master ',
     'run get rebase': 'git rebase ',
-    'run get remote': 'git remote -v',
+    'run get remote': 'git remote -v \n',
     'run get reset': 'git reset ',
     'run get show': 'git show ',
     'run get status': 'git status \n',
@@ -327,10 +337,10 @@ keymap.update({
     'state const': 'const ',
     'tip byte': 'byte ',
 
-    'args': ['()', Key('left')],
+    'args': CursorText('({.})'),
     'args left': '(',
     'args right': ')',
-    'index': ['[]', Key('left')],
+    'index': CursorText('[{.}]'),
     'index left': '[',
     'index right': ']',
     'block left': '{',
@@ -341,14 +351,14 @@ keymap.update({
     'empty object': '{}',
 
     'state (def | deaf | deft)': 'def ',
-    'state if': ['if ()', Key('left')],
+    'state if': CursorText('if ({.})'),
     'state else': [' else {}', Key('left'), Key('enter')],
     'state else super': [' else {}', Key('left'), Key('enter enter up tab')],
-    'state else if': [' else if ()', Key('left')],
-    'state while': ['while ()', Key('left')],
-    'state for': ['for ()', Key('left')],
+    'state else if': CursorText(' else if ({.})'),
+    'state while': CursorText('while ({.})'),
+    # 'state for': ['for ()', Key('left')],
     'state for': 'for`',
-    'state switch': ['switch ()', Key('left')],
+    'state switch': CursorText('switch ({.})'),
     'state case': ['case \nbreak;', Key('up')],
     'state import': 'import ',
     'state class': 'class ',
@@ -377,8 +387,7 @@ keymap.update({
     'dunder in it': '__init__',
     'self taught': 'self.',
     'teapot': 'this.',
-    'dickt in it': ['{}', Key('left')],
-    'list in it': ['[]', Key('left')],
+    'dickt in it': CursorText('{{.}}'),
     'string utf8': "'utf8'",
 
     'tinker': '`',
@@ -417,8 +426,8 @@ keymap.update({
     'look top': [Key('cmd-up')],
     'look bottom': [Key('cmd-down')],
 
-    'chain then': ['.then()', Key('left')],
-    'chain catch': ['.catch()', Key('left')],
+    'chain catch': CursorText('.catch({.})'),
+    'chain then': CursorText('.then({.})'),
 })
 
 def select_text_to_left_of_cursor(m):
