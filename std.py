@@ -91,10 +91,10 @@ token_replace = {
     'et cetera': 'etc',
     'e-mail': 'email',
     'I\\pronoun': 'I',
-    'I\'ll': 'I\'ll',
-    'I\'m': 'I\'m',
-    'I\'ve': 'I\'ve',
-    'I\'d': 'I\'d',
+    "I'll": "I'll",
+    "I'm": "I'm",
+    "I've": "I've",
+    "I'd": "I'd",
     'meta-\\\\meta': 'meta',
 }
 
