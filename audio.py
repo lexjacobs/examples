@@ -1,14 +1,11 @@
 from talon.voice import Key, Context
-from subprocess import Popen, PIPE
+from talon import applescript
 
 ctx = Context('audio')
 
 
 def run_script(script):
-    p = Popen(['osascript'], stdin=PIPE,
-              stdout=PIPE, stderr=PIPE, universal_newlines=True)
-    p.communicate(script)
-    p.terminate()
+    applescript.run(script)
 
 
 def text_to_number(m, numwords={}):
