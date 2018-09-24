@@ -28,6 +28,7 @@ keymap = {
     'word just': 'gist',
     'word hero': 'heroku',
     'word jason': 'JSON',
+    'word mongo': 'mongo',
     'word no': 'null',
     'word no super': 'NULL',
     'word printf': 'printf',
