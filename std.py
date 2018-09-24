@@ -247,6 +247,8 @@ keymap.update({
     'replace last <dgndictation>': [Key('alt-backspace'), text],
     'replace next <dgndictation>': [Key('alt-shift-right'), text],
     'tools emoji': Key('cmd-ctrl-space'),
+    'pixel': 'px',
+    'word pixel': 'pixel',
     'tools tag <dgndictation>': ['<', text, '>', '</', text, '>'],
     'tools tag': CursorText('<{.}>'),
 
