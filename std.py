@@ -88,6 +88,8 @@ mapping = {
 punctuation = set('.,–!?')
 
 token_replace = {
+    'Café': 'cafe',
+    'crème brûlée': 'creme brulee',
     'et cetera': 'etc',
     'e-mail': 'email',
     'I\\pronoun': 'I',
@@ -315,6 +317,7 @@ keymap.update({
     'run get diff': 'git diff \n',
     'run get fetch': 'git fetch ',
     'run get grep': 'git grep ',
+    'run get history': 'git hist \n',
     'run get in it': 'git init \n',
     'run get log': 'git log ',
     'run get merge': 'git merge ',
