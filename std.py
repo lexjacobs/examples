@@ -388,7 +388,6 @@ keymap.update({
     'word shell': 'shell',
 
     'snippet console': 'cl`',
-    'snippet shrug': 'shrug`',
     'snippet spooky': 'spooky`',
 
     'word talon': 'talon',
