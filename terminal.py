@@ -20,10 +20,12 @@ keymap = {
     'open sublime': Str('subl .\n'),
     'open adam': Str('atom .\n'),
 
+    'window clear': Key('cmd-k'),
     'tools full-screen': Key('cmd-enter'),
     'tools exit': [Key('ctrl-c'), 'exit\n'],
-    'window clear': Key('cmd-k'),
     'tools (reset|refresh)': Key('ctrl-c up enter'),
+    'tools wi-fi off': 'networksetup -setairportpower en0 off\n',
+    'tools wi-fi on': 'networksetup -setairportpower en0 on\n'
 }
 
 ctx.keymap(keymap)
