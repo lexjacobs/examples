@@ -21,7 +21,7 @@ alpha.update(dict(alnum))
 # modifier key mappings
 fkeys = [(f'funky {i}', f'f{i}') for i in range(1, 13)]
 keys = [
-    'left', 'right', 'up', 'down', 'shift', 'tab', 'escape', 'enter', 'space',
+    'left', 'right', 'up', 'down', 'tab', 'escape', 'enter', 'space',
     'backspace', 'delete', 'home', 'pageup', 'pagedown', 'end',
 ]
 keys = alnum + [(k, k) for k in keys]
@@ -259,7 +259,8 @@ keymap.update({
     'tools tag <dgndictation>': ['<', text, '>', '</', text, '>'],
     'tools tag': CursorText('<{.}>'),
 
-    '(%s)+ [<dgndictation>] [over]' % (' | '.join(formatters)): FormatText,
+    '(%s)++ <dgndictation> [over]' % (' | '.join(formatters)): FormatText,
+    # '(%s)++ [<dgndictation>] [over]' % (' | '.join(formatters)): FormatText,
     'tab': Key('tab'),
     'tarp': Key('shift-tab'),
     'left': Key('left'),
@@ -335,6 +336,8 @@ keymap.update({
     'run get remote': 'git remote -v \n',
     'run get reset': 'git reset ',
     'run get show': 'git show ',
+    'run get stash': 'git stash ',
+    'run get stash pop': 'git stash pop\n',
     'run get status': 'git status \n',
     'run get tag': 'git tag ',
     'run rim raft': 'rm -rf ',
@@ -418,7 +421,7 @@ keymap.update({
     'open divide equals': ' /= ',
 
     'open greater': ' > ',
-    'open less]': ' < ',
+    'open less': ' < ',
     'open equal': ' === ',
     'open not equal': ' !== ',
     'open greater equal': ' >= ',

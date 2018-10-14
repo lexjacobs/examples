@@ -4,7 +4,7 @@ from talon import ctrl, voice
 from talon import tap
 from talon.audio import noise
 from talon.track.geom import Point2d
-import eye_zoom_mouse
+from talon_plugins import eye_zoom_mouse
 
 class NoiseModel:
     def __init__(self):

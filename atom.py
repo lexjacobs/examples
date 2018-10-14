@@ -26,8 +26,8 @@ for n in [20, 30, 40, 50, 60, 70, 80, 90]:
     numeral_map[str(n)] = n
 numeral_map["oh"] = 0 # synonym for zero
 
-numerals          = ' (' + ' | '.join(sorted(numeral_map.keys())) + ')+'
-optional_numerals = ' (' + ' | '.join(sorted(numeral_map.keys())) + ')*'
+numerals          = ' (' + ' | '.join(sorted(numeral_map.keys())) + ')++'
+optional_numerals = ' (' + ' | '.join(sorted(numeral_map.keys())) + ')**'
 
 def text_to_number(m):
 

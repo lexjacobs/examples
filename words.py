@@ -37,7 +37,7 @@ keymap = {
     'word ramda': 'ramda',
     'word slack': 'slack',
     'word string': 'JSON.stringify',
-    'word pseudo-\\\\pseudo': 'sudo ',
+    'word pseudo': 'sudo ',
     'word them': 'vim',
     'word two strings': 'toString',
     'word will': 'twilio',

@@ -13,7 +13,7 @@ keymap = {
     'cd home': 'cd ~; ls -a;\n',
     'cd parent': 'cd ..; ls -a;\n',
 
-    'snip line': [Key('ctrl-a'), Key('ctrl-k')],
+    'shell snip': [Key('ctrl-a'), Key('ctrl-k')],
     'kite': [Key('esc'), Key('d')],
     'trough': [Key('ctrl-w')],
     'tools oedipus': [Key('ctrl-x'), Key('ctrl-e')],

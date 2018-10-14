@@ -1,4 +1,4 @@
-import eye_mouse
+from talon_plugins import eye_mouse
 import time
 from talon import ctrl, tap
 from talon.voice import Context, Key

@@ -22,12 +22,10 @@ for i, w in enumerate(['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'se
     number_conversions[w] = str(i)
     number_conversions['%s\\number' % (w)] = str(i)
 
-
 def parse_words_as_integer(words):
-
     # Ignore any potential trailing non-number words
     number_words = list(itertools.takewhile(
-        lambda w: w not in number_conversions, words))
+        lambda w: w in number_conversions, words))
 
     # Somehow, no numbers were detected
     if len(number_words) == 0:
