@@ -184,8 +184,8 @@ keymap.update({
     'tools tag <dgndictation>': ['<', text, '>', '</', text, '>'],
     'tools tag': CursorText('<{.}>'),
 
-    '(%s)++ <dgndictation> [over]' % (' | '.join(formatters)): FormatText,
-    # '(%s)++ [<dgndictation>] [over]' % (' | '.join(formatters)): FormatText,
+    '(%s)+ [<dgndictation>]' % (' | '.join(formatters)): FormatText,
+
     'tarp': Key('shift-tab'),
     'left': Key('left'),
     'right': Key('right'),
@@ -353,7 +353,7 @@ keymap.update({
     'look down': [Key('pagedown')],
     'look top': [Key('cmd-up')],
     'look bottom': [Key('cmd-down')],
-  
+
     'ten': '10',
     'twenty': '20',
     'thirty': '30',
