@@ -3,80 +3,6 @@ from talon import app, ctrl, clip, ui
 from talon_init import TALON_HOME, TALON_PLUGINS, TALON_USER
 import string
 
-# original talon alphabet
-# alpha_alt = 'air bat cap die each fail gone harm sit jury crash look mad near oil pit quest red sun trap urge vest whale box yes zip'.split()
-
-# hybrid talon alphabet
-# alpha_alt = 'air bat cap (die|drum) each (fail|fine) (gone|gust) (harm|harp) sit jury (crash|crunch) look (mad|made) near oil pit (quest|quench) red sun trap urge vest whale (box|plex) (yes|yank) zip'.split()
-
-# new talon alphabet
-alpha_alt = 'air bat cap drum each fine gust harp sit jury crunch look made near oil pit quench red sun trap urge vest whale plex yank zip'.split()
-###
-alnum = list(zip(alpha_alt, string.ascii_lowercase)) + [(str(i), str(i)) for i in range(0, 10)]
-
-alpha = {}
-alpha.update(dict(alnum))
-# alpha.update({'ship %s' % word: letter for word, letter in zip(alpha_alt, string.ascii_uppercase)})
-
-# modifier key mappings
-fkeys = [(f'funky {i}', f'f{i}') for i in range(1, 13)]
-keys = [
-    'left', 'right', 'up', 'down', 'tab', 'escape', 'enter', 'space',
-    'backspace', 'delete', 'home', 'pageup', 'pagedown', 'end',
-]
-keys = alnum + [(k, k) for k in keys]
-keys += [
-    ('tilde', '`'),
-    ('comma', ','),
-    ('dot', '.'),
-    ('slash', '/'),
-    ('(return | enter)', 'enter'),
-    ('quote', "'"),
-    ('index left', '['),
-    ('index right', ']'),
-    ('backslash', '\\'),
-    ('minus', '-'),
-    ('equals', '='),
-    ('plus', '+'),
-    ('delete', 'backspace')
-] + fkeys
-
-alpha.update({word: Key(key) for word, key in fkeys})
-alpha.update({'shift %s' % k: Key('shift-%s' % v) for k, v in keys})
-alpha.update({'option %s' % k: Key('alt-%s' % v) for k, v in keys})
-alpha.update({'option shift %s' % k: Key('alt-shift-%s' % v) for k, v in keys})
-alpha.update({'control %s' % k: Key('ctrl-%s' % v) for k, v in keys})
-alpha.update({'control shift %s' % k: Key('ctrl-shift-%s' % v) for k, v in keys})
-alpha.update({'control option %s' % k: Key('ctrl-alt-%s' % v) for k, v in keys})
-alpha.update({'command %s' % k: Key('cmd-%s' % v) for k, v in keys})
-alpha.update({'command control %s' % k: Key('cmd-ctrl-%s' % v) for k, v in keys})
-alpha.update({'command shift %s' % k: Key('cmd-shift-%s' % v) for k, v in keys})
-alpha.update({'command option %s' % k: Key('cmd-alt-%s' % v) for k, v in keys})
-alpha.update({'command option shift %s' % k: Key('cmd-alt-shift-%s' % v) for k, v in keys})
-
-numerals = {
-    'ten': '10',
-    # 'eleven': '11',
-    # 'twelve': '12',
-    # 'thirteen': '13',
-    # 'fourteen': '14',
-    # 'fifteen': '15',
-    # 'sixteen': '16',
-    # 'seventeen': '17',
-    # 'eighteen': '18',
-    # 'nineteen': '19',
-    'twenty': '20',
-    'thirty': '30',
-    'forty': '40',
-    'fifty': '50',
-    'sixty': '60',
-    'seventy': '70',
-    'eighty': '80',
-    'ninety': '90',
-}
-
-alpha.update(numerals)
-
 # cleans up some Dragon output from <dgndictation>
 mapping = {
     'semicolon': ';',
@@ -224,7 +150,6 @@ def CursorText(s):
   return [left + right, Key(' '.join(['left'] * len(right)))]
 
 keymap = {}
-keymap.update(alpha)
 keymap.update({
     'oh <dgndictation> [over]': text,
     'word <dgnwords>': word,
@@ -261,19 +186,14 @@ keymap.update({
 
     '(%s)++ <dgndictation> [over]' % (' | '.join(formatters)): FormatText,
     # '(%s)++ [<dgndictation>] [over]' % (' | '.join(formatters)): FormatText,
-    'tab': Key('tab'),
     'tarp': Key('shift-tab'),
     'left': Key('left'),
     'right': Key('right'),
     'up': Key('up'),
     'down': Key('down'),
 
-    'delete': Key('backspace'),
-
     'slap': [Key('cmd-right enter')],
-    'enter': Key('enter'),
     'shock': Key('cmd-shift-enter'),
-    'escape': Key('esc'),
     'question [mark]': '?',
     'tilde': '~',
     '(bang | exclamation point)': '!',
@@ -354,8 +274,6 @@ keymap.update({
     'args left': '(',
     'args right': ')',
     'index': CursorText('[{.}]'),
-    'index left': '[',
-    'index right': ']',
     'block left': '{',
     'block right': '}',
     'block': [' {}', Key('left enter')],
@@ -405,8 +323,6 @@ keymap.update({
     'tinker': '`',
     'tinker triple': '```',
     'equals': '=',
-    'minus': '-',
-    'plus': '+',
     'open arrow': ' -> ',
     'call': '()',
     'assign': ' = ',
@@ -431,12 +347,22 @@ keymap.update({
     'open or': ' || ',
     'open question': ' ? ',
     'open colon': ' : ',
-    '[op] (logical | bitwise) and': ' & ',
+    'open and': ' & ',
     'open pipe': ' | ',
     'look up': [Key('pageup')],
     'look down': [Key('pagedown')],
     'look top': [Key('cmd-up')],
     'look bottom': [Key('cmd-down')],
+  
+    'ten': '10',
+    'twenty': '20',
+    'thirty': '30',
+    'forty': '40',
+    'fifty': '50',
+    'sixty': '60',
+    'seventy': '70',
+    'eighty': '80',
+    'ninety': '90',
 
     'chain catch': CursorText('.catch({.})'),
     'chain then': CursorText('.then({.})'),
