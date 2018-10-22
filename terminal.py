@@ -17,6 +17,7 @@ keymap = {
     'kite': [Key('esc'), Key('d')],
     'trough': [Key('ctrl-w')],
     'tools oedipus': [Key('ctrl-x'), Key('ctrl-e')],
+    'open code': Str('code .\n'),
     'open sublime': Str('subl .\n'),
     'open adam': Str('atom .\n'),
 
