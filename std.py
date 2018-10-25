@@ -283,6 +283,7 @@ keymap.update({
 
     'state (def | deaf | deft)': 'def ',
     'state if': CursorText('if ({.})'),
+    'state if not': CursorText('if (!{.})'),
     'state else': [' else {}', Key('left'), Key('enter')],
     'state else super': [' else {}', Key('left'), Key('enter enter up tab')],
     'state else if': CursorText(' else if ({.})'),

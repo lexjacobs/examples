@@ -12,9 +12,13 @@ def move_to_line(m):
     press('enter')
 
 keymap = {
-    'tools beautify': Key('alt-shift-f'),
     '(spring) (0 | oh | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9)++': move_to_line,
-    'bracken': [Key('cmd-ctrl-shift-right')]
+    'bracken': Key('cmd-ctrl-shift-right'),
+    'tools beautify': Key('alt-shift-f'),
+    'tools terminal': Key('ctrl-shift-`'),
+    'window terminal next': Key('cmd-alt-right'),
+    'tools tree': Key('cmd-shift-e'),
+    'tools run code': Key('ctrl-alt-n'),
 }
 
 ctx.keymap(keymap)
