@@ -79,7 +79,7 @@ def rot13(i, word, _):
     return out
 
 formatters = {
-    'dunder': (True,  lambda i, word, _: '__%s__' % word if i == 0 else word),
+    # 'dunder': (True,  lambda i, word, _: '__%s__' % word if i == 0 else word),
     'camel':  (True,  lambda i, word, _: word if i == 0 else word.capitalize()),
     'snake':  (True,  lambda i, word, _: word if i == 0 else '_'+word),
     'smash':  (True,  lambda i, word, _: word),
@@ -187,10 +187,10 @@ keymap.update({
     '(%s)+ [<dgndictation>]' % (' | '.join(formatters)): FormatText,
 
     'tarp': Key('shift-tab'),
-    'left': Key('left'),
-    'right': Key('right'),
-    'up': Key('up'),
-    'down': Key('down'),
+    # 'left': Key('left'),
+    # 'right': Key('right'),
+    # 'up': Key('up'),
+    # 'down': Key('down'),
 
     'slap': [Key('cmd-right enter')],
     'shock': Key('cmd-shift-enter'),
@@ -348,7 +348,6 @@ keymap.update({
     'open or': ' || ',
     'open question': ' ? ',
     'open colon': ' : ',
-    'open and': ' & ',
     'open pipe': ' | ',
     'look up': [Key('pageup')],
     'look down': [Key('pagedown')],

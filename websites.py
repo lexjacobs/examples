@@ -1,21 +1,18 @@
-from talon import clip
-from talon.voice import press, Context
+from talon.voice import Context
 import os
 
 ctx = Context('websites')
 
-
-def Paste(s):
+def openSite(s):
     def func(m):
-        clip.set(s)
-        press('cmd-v')
+        os.system('open ' + s)
     return func
 
-
 ctx.keymap({
-    'website doc': lambda m: os.system('open https://duckduckgo.com/'),
-    'website get hub': lambda m: os.system('open https://github.com/lexjacobs/'),
-    'website gmail': lambda m: os.system('open https://gmail.com'),
-    'website google': lambda m: os.system('open https://google.com'),
-    'website stack': lambda m: os.system('open https://stackoverflow.com/'),
+    'website doc': openSite('https://duckduckgo.com/'),
+    'website get hub': openSite('https://github.com/lexjacobs/'),
+    'website gmail': openSite('https://gmail.com'),
+    'website google': openSite('https://google.com'),
+    'website stack': openSite('https://stackoverflow.com/'),
+    'website youtube': openSite('https://youtube.com'),
 })
