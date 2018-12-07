@@ -12,6 +12,7 @@ keymap = {
     'spotty': Key('cmd-space'),
     'switch': Key('cmd-tab'),
     'tab close': Key('cmd-w'),
+    'tab reopen': Key('cmd-shift-t'),
     'window new': Key('cmd-n'),
     'window next': Key('cmd-`'),
     'window last': Key('cmd-shift-`'),

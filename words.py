@@ -1,11 +1,14 @@
 from talon.voice import Context, Key, Str
 
 ctx = Context('words')
+
+
 def shrink_word(m):
     word = str(m.dgndictation[0]._words[0]).lower()
     if not word in shrink_map:
         raise Exception('%s not in shrink map' % word)
     Str(shrink_map[word])(None)
+
 
 keymap = {
     'dot company': '.com',
@@ -40,6 +43,7 @@ keymap = {
     'word (sql|sequel)': 'sequelize',
     'word slack': 'slack',
     'word string': 'JSON.stringify',
+    'word ping': 'ping ',
     'word pseudo': 'sudo ',
     'word them': 'vim',
     'word two strings': 'toString',
