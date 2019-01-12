@@ -31,7 +31,7 @@ keymap = {
     'word glitch': 'glitch',
     'word just': 'gist',
     'word hand': 'hand',
-    'word hero': 'heroku',
+    '(name|word) hero': 'heroku',
     'word jason': 'JSON',
     'word mongo': 'mongo',
     'word no': 'null',

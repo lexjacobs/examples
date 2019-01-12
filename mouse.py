@@ -10,11 +10,14 @@ x, y = ctrl.mouse_pos()
 mouse_history = [(x, y, time.time())]
 force_move = None
 
+
 def mouse_drag(m):
     ctrl.mouse_click(button=0, down=True)
 
+
 def mouse_release(m):
     ctrl.mouse_click(button=0, up=True)
+
 
 def adv_click(button, *mods, **kwargs):
     def click(e):
@@ -24,6 +27,10 @@ def adv_click(button, *mods, **kwargs):
         for key in reversed(mods):
             ctrl.key_press(key, up=True)
     return click
+
+
+# TODO: modify for second monitor https://talonvoice.com/docs/index.html#document-modules/ctrl
+# ui.screens()[1]
 
 def mouse_grid(m):
     positions = {1: (0, 0), 2: (2, 0), 3: (4, 0), 4: (0, 2), 5: (
@@ -36,7 +43,9 @@ def mouse_grid(m):
     segmenty = height / 6
     spokenx = positions.get(position)[0]
     spokeny = positions.get(position)[1]
-    ctrl.mouse((segmentx * spokenx + segmentx),(segmenty * spokeny + segmenty))
+    ctrl.mouse((segmentx * spokenx + segmentx),
+               (segmenty * spokeny + segmenty))
+
 
 keymap = {
     'click right': adv_click(1),
@@ -56,6 +65,7 @@ keymap = {
     'click double paste': [lambda m: ctrl.mouse_click(button=0, times=2), Key('cmd-v')],
     'mouse corner': lambda m: ctrl.mouse(0, 0),
     'mouse grid (1|2|3|4|5|6|7|8|9)': mouse_grid,
+    'mouse grid second': lambda m: ctrl.mouse(2332.0, 389.0),
     'move up': lambda m: ctrl.mouse(0, 0, dx=0, dy=-10),
     'move right': lambda m: ctrl.mouse(0, 0, dx=10, dy=0),
     'move left': lambda m: ctrl.mouse(0, 0, dx=-10, dy=0),

@@ -23,8 +23,10 @@ token_replace = {
     "I'm": "I'm",
     "I've": "I've",
     "I'd": "I'd",
+    "JavaScript": "JavaScript",
     'meta-\\\\meta': 'meta',
 }
+
 
 def parse_word(word):
     word = str(word)
@@ -36,6 +38,7 @@ def parse_word(word):
     word = mapping.get(word, word)
     return word
 
+
 def join_words(words, sep=' '):
     out = ''
     for i, word in enumerate(words):
@@ -44,31 +47,41 @@ def join_words(words, sep=' '):
         out += word
     return out
 
+
 def parse_words(m):
     return list(map(parse_word, m.dgndictation[0]._words))
+
 
 def insert(s):
     Str(s)(None)
 
+
 def text(m):
     insert(join_words(parse_words(m)))
+
 
 def sentence_text(m):
     insert(join_words(capitalize(parse_words(m))))
 
+
 def capitalize(words):
     return [words[0].capitalize()] + words[1:]
+
 
 def word(m):
     text = join_words(list(map(parse_word, m.dgnwords[0]._words)))
     insert(text.lower())
 
+
 def surround(by):
     def func(i, word, last):
-        if i == 0: word = by + word
-        if last: word += by
+        if i == 0:
+            word = by + word
+        if last:
+            word += by
         return word
     return func
+
 
 def rot13(i, word, _):
     out = ''
@@ -78,18 +91,19 @@ def rot13(i, word, _):
         out += c
     return out
 
+
 formatters = {
     # 'dunder': (True,  lambda i, word, _: '__%s__' % word if i == 0 else word),
-    'camel':  (True,  lambda i, word, _: word if i == 0 else word.capitalize()),
-    'snake':  (True,  lambda i, word, _: word if i == 0 else '_'+word),
-    'smash':  (True,  lambda i, word, _: word),
-    'squash':  (False,  lambda i, word, _: word),
-    'spine':  (True,  lambda i, word, _: word if i == 0 else '-'+word),
+    'camel':  (True, lambda i, word, _: word if i == 0 else word.capitalize()),
+    'snake':  (True, lambda i, word, _: word if i == 0 else '_'+word),
+    'smash':  (True, lambda i, word, _: word),
+    'squash':  (False, lambda i, word, _: word),
+    'spine':  (True, lambda i, word, _: word if i == 0 else '-'+word),
     'title':  (False, lambda i, word, _: word.capitalize()),
     'dubstring': (False, surround('"')),
     'string': (False, surround("'")),
     'padded': (False, surround(" ")),
-    'pickle': (True,  lambda i, word, _: word if i == 0 else ''),
+    'pickle': (True, lambda i, word, _: word if i == 0 else ''),
     'rockthirteen':  (False, rot13),
     'pathway':  (True, lambda i, word, _: word if i == 0 else '/'+word),
     'dotsway':  (True, lambda i, word, _: word if i == 0 else '.'+word),
@@ -100,6 +114,7 @@ formatters = {
     'thrack': (True, lambda i, word, _: word[0:3]),
     'quattro': (True, lambda i, word, _: word[0:4]),
 }
+
 
 def FormatText(m):
     fmt = []
@@ -138,16 +153,20 @@ def FormatText(m):
         sep = ''
     Str(sep.join(words))(None)
 
+
 def copy_bundle(m):
     bundle = ui.active_app().bundle
     clip.set(bundle)
     app.notify('Copied app bundle', body='{}'.format(bundle))
 
+
 ctx = Context('input')
 
+
 def CursorText(s):
-  left, right = s.split('{.}', 1)
-  return [left + right, Key(' '.join(['left'] * len(right)))]
+    left, right = s.split('{.}', 1)
+    return [left + right, Key(' '.join(['left'] * len(right)))]
+
 
 keymap = {}
 keymap.update({
@@ -321,8 +340,8 @@ keymap.update({
     'dickt in it': CursorText('{{.}}'),
     'string utf8': "'utf8'",
 
-    'tinker': '`',
-    'tinker triple': '```',
+    'tanker': '`',
+    'tanker triple': '```',
     'equals': '=',
     'open arrow': ' -> ',
     'call': '()',
@@ -369,6 +388,7 @@ keymap.update({
     'tools copy bundle': copy_bundle,
 })
 
+
 def select_text_to_left_of_cursor(m):
     words = parse_words(m)
     if not words:
@@ -390,6 +410,7 @@ def select_text_to_left_of_cursor(m):
     for i in range(0, len(key)):
         press("shift-right")
 
+
 def select_text_to_right_of_cursor(m, mod):
     key = join_words(parse_words(m)).lower()
     with clip.capture() as clipboardText:
@@ -406,6 +427,7 @@ def select_text_to_right_of_cursor(m, mod):
     # now select the matching key text
     for i in range(0, len(key)):
         press('shift-right', wait=0)
+
 
 keymap.update({
     'crew <dgndictation> [over]': lambda m: select_text_to_right_of_cursor(m, mod='right'),
