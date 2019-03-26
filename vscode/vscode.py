@@ -36,6 +36,7 @@ def join_words(words, sep=" "):
         out += word
     return out
 
+
 def parse_words(m):
     try:
         return list(map(parse_word, m.dgndictation[0]._words))
@@ -49,7 +50,6 @@ def insert(s):
 
 def text(m):
     insert(join_words(parse_words(m)).lower())
-
 
 
 _numeral_map = dict((str(n), n) for n in range(0, 20))

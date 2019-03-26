@@ -1,7 +1,8 @@
 from talon.voice import Context, Rep, RepPhrase, talon
 from user.utils import parse_words_as_integer
 
-ctx = Context('repeater')
+ctx = Context("repeater")
+
 
 def repeat(m):
     repeat_count = parse_words_as_integer(m._words[1:])
@@ -10,7 +11,10 @@ def repeat(m):
         repeater.ctx = talon
         return repeater(None)
 
-ctx.keymap({
-    'creek': RepPhrase(1),
-    '(rep | repeat) (0 | oh | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9)++': repeat,
-})
+
+ctx.keymap(
+    {
+        "creek": RepPhrase(1),
+        "(rep | repeat) (0 | oh | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9)++": repeat,
+    }
+)

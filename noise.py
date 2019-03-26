@@ -6,6 +6,7 @@ from talon.audio import noise
 from talon.track.geom import Point2d
 from talon_plugins import eye_zoom_mouse
 
+
 class NoiseModel:
     def __init__(self):
         self.hiss_start = 0
@@ -16,10 +17,11 @@ class NoiseModel:
         self.dragging = False
 
         tap.register(tap.MMOVE, self.on_move)
-        noise.register('noise', self.on_noise)
+        noise.register("noise", self.on_noise)
 
     def on_move(self, typ, e):
-        if typ != tap.MMOVE: return
+        if typ != tap.MMOVE:
+            return
         self.mouse_last = pos = Point2d(e.x, e.y)
         if self.hiss_start and not self.dragging:
             if (pos - self.mouse_origin).len() > 10:
@@ -34,9 +36,9 @@ class NoiseModel:
         # now = time.time()
         if not voice.talon.enabled:
             return
-        if noise == 'pop' and eye_zoom_mouse.zoom_mouse.enabled:
+        if noise == "pop" and eye_zoom_mouse.zoom_mouse.enabled:
             return
-        if noise == 'pop':
+        if noise == "pop":
             ctrl.mouse_click(button=0, hold=16000)
         # elif noise == 'hiss_start':
         #     if now - self.hiss_last < 0.25:
@@ -67,5 +69,6 @@ class NoiseModel:
         #         #     ctrl.mouse_click(button=0)
         #         #     self.hiss_last = now
         #     self.hiss_start = 0
+
 
 model = NoiseModel()
